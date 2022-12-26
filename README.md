@@ -1,0 +1,1 @@
+The MyNotes project - it's clone of the My Diary - Journal with Lock
