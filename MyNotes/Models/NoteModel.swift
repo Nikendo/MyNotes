@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct NoteModel {
+struct NoteModel: Identifiable {
+    let id: UUID
     let date: Date
     let mood: Mood
     let title: String
@@ -21,6 +22,7 @@ struct NoteModel {
 
     static func getDefault() -> NoteModel {
         .init(
+            id: .init(),
             date: .now,
             mood: .normal,
             title: "New note",

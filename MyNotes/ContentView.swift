@@ -8,6 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+
+    @State var notes: [NoteModel] = [
+        .getDefault(),
+        .getDefault(),
+        .getDefault(),
+        .getDefault(),
+        .getDefault()
+    ]
+
     var body: some View {
         ZStack {
             backgroundView
@@ -30,19 +39,25 @@ struct ContentView: View {
     }
 
     @ViewBuilder private var contentView: some View {
-        VStack {
-            Image("landscape_summer_1")
-                .resizable()
-                .scaledToFit()
-            VStack {
-                Image(systemName: "globe")
-                    .imageScale(.large)
-                    .foregroundColor(.accentColor)
-                Text("Hello, world!")
-            }
-            .padding()
+        ScrollView {
+            contentHeaderView
+            notesList
             Spacer()
+                .frame(minHeight: 124)
         }
+    }
+
+    @ViewBuilder private var contentHeaderView: some View {
+        Image("landscape_summer_1")
+            .resizable()
+            .scaledToFit()
+    }
+
+    @ViewBuilder private var notesList: some View {
+            ForEach(notes) { note in
+                NoteView(note: note)
+                    .padding(.horizontal)
+            }
     }
 }
 
