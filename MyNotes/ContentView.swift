@@ -13,7 +13,7 @@ struct ContentView: View {
             backgroundView
             contentView
                 .ignoresSafeArea()
-            navigationBarView
+            navigationViews
         }
     }
 
@@ -21,7 +21,7 @@ struct ContentView: View {
         Color("4E7700").ignoresSafeArea()
     }
 
-    @ViewBuilder private var navigationBarView: some View {
+    @ViewBuilder private var navigationViews: some View {
         VStack {
             CustomNavigationBar()
             Spacer()
