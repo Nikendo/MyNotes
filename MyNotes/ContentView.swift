@@ -25,6 +25,7 @@ struct ContentView: View {
         VStack {
             CustomNavigationBar()
             Spacer()
+            CustomTabBar()
         }
     }
 
@@ -42,7 +43,6 @@ struct ContentView: View {
             .padding()
             Spacer()
         }
-//        .padding(.top, 48)
     }
 }
 

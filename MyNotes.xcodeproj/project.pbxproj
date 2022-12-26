@@ -17,6 +17,7 @@
 		733DE6362957C01700508D9C /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733DE6352957C01700508D9C /* CustomNavigationBar.swift */; };
 		733DE6382957CA4700508D9C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 733DE6372957CA4700508D9C /* Images.xcassets */; };
 		733DE63A2957CC6900508D9C /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 733DE6392957CC6900508D9C /* Colors.xcassets */; };
+		73C7295C295A094400BD4885 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C7295B295A094400BD4885 /* CustomTabBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		733DE6352957C01700508D9C /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		733DE6372957CA4700508D9C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		733DE6392957CC6900508D9C /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		73C7295B295A094400BD4885 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				733DE6352957C01700508D9C /* CustomNavigationBar.swift */,
+				73C7295B295A094400BD4885 /* CustomTabBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73C7295C295A094400BD4885 /* CustomTabBar.swift in Sources */,
 				733DE6362957C01700508D9C /* CustomNavigationBar.swift in Sources */,
 				733DE60B2957BF6900508D9C /* ContentView.swift in Sources */,
 				733DE6092957BF6900508D9C /* MyNotesApp.swift in Sources */,
