@@ -14,6 +14,9 @@
 		733DE61A2957BF6B00508D9C /* MyNotesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733DE6192957BF6B00508D9C /* MyNotesTests.swift */; };
 		733DE6242957BF6B00508D9C /* MyNotesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733DE6232957BF6B00508D9C /* MyNotesUITests.swift */; };
 		733DE6262957BF6B00508D9C /* MyNotesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733DE6252957BF6B00508D9C /* MyNotesUITestsLaunchTests.swift */; };
+		733DE6362957C01700508D9C /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733DE6352957C01700508D9C /* CustomNavigationBar.swift */; };
+		733DE6382957CA4700508D9C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 733DE6372957CA4700508D9C /* Images.xcassets */; };
+		733DE63A2957CC6900508D9C /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 733DE6392957CC6900508D9C /* Colors.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,9 @@
 		733DE61F2957BF6B00508D9C /* MyNotesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyNotesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		733DE6232957BF6B00508D9C /* MyNotesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNotesUITests.swift; sourceTree = "<group>"; };
 		733DE6252957BF6B00508D9C /* MyNotesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNotesUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		733DE6352957C01700508D9C /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
+		733DE6372957CA4700508D9C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		733DE6392957CC6900508D9C /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +100,11 @@
 		733DE6072957BF6900508D9C /* MyNotes */ = {
 			isa = PBXGroup;
 			children = (
+				733DE6322957BFAB00508D9C /* Views */,
 				733DE6082957BF6900508D9C /* MyNotesApp.swift */,
 				733DE60A2957BF6900508D9C /* ContentView.swift */,
+				733DE6372957CA4700508D9C /* Images.xcassets */,
+				733DE6392957CC6900508D9C /* Colors.xcassets */,
 				733DE60C2957BF6B00508D9C /* Assets.xcassets */,
 				733DE60E2957BF6B00508D9C /* Preview Content */,
 			);
@@ -125,6 +134,14 @@
 				733DE6252957BF6B00508D9C /* MyNotesUITestsLaunchTests.swift */,
 			);
 			path = MyNotesUITests;
+			sourceTree = "<group>";
+		};
+		733DE6322957BFAB00508D9C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				733DE6352957C01700508D9C /* CustomNavigationBar.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,6 +248,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				733DE6382957CA4700508D9C /* Images.xcassets in Resources */,
+				733DE63A2957CC6900508D9C /* Colors.xcassets in Resources */,
 				733DE6102957BF6B00508D9C /* Preview Assets.xcassets in Resources */,
 				733DE60D2957BF6B00508D9C /* Assets.xcassets in Resources */,
 			);
@@ -257,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				733DE6362957C01700508D9C /* CustomNavigationBar.swift in Sources */,
 				733DE60B2957BF6900508D9C /* ContentView.swift in Sources */,
 				733DE6092957BF6900508D9C /* MyNotesApp.swift in Sources */,
 			);
@@ -420,11 +440,12 @@
 				DEVELOPMENT_TEAM = H4F2QKH8C8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -449,11 +470,12 @@
 				DEVELOPMENT_TEAM = H4F2QKH8C8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

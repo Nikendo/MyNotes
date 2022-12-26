@@ -9,13 +9,40 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        ZStack {
+            backgroundView
+            contentView
+                .ignoresSafeArea()
+            navigationBarView
         }
-        .padding()
+    }
+
+    @ViewBuilder private var backgroundView: some View {
+        Color("4E7700").ignoresSafeArea()
+    }
+
+    @ViewBuilder private var navigationBarView: some View {
+        VStack {
+            CustomNavigationBar()
+            Spacer()
+        }
+    }
+
+    @ViewBuilder private var contentView: some View {
+        VStack {
+            Image("landscape_summer_1")
+                .resizable()
+                .scaledToFit()
+            VStack {
+                Image(systemName: "globe")
+                    .imageScale(.large)
+                    .foregroundColor(.accentColor)
+                Text("Hello, world!")
+            }
+            .padding()
+            Spacer()
+        }
+//        .padding(.top, 48)
     }
 }
 
