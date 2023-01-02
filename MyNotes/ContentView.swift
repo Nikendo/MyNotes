@@ -13,7 +13,7 @@ struct ContentView: View {
         .getDefault(),
         .getDefault(),
         .getDefault(),
-        .getDefault(),
+        .getDefault(long: true),
         .getDefault()
     ]
 

@@ -14,19 +14,19 @@ struct NoteModel: Identifiable {
     let title: String
     let message: String
 
-    enum Mood {
-        case sad
-        case normal
-        case happy
+    enum Mood: String {
+        case sad = "😔"
+        case normal = "😐"
+        case happy = "😃"
     }
 
-    static func getDefault() -> NoteModel {
+    static func getDefault(withTitle: Bool = true, long: Bool = false) -> NoteModel {
         .init(
             id: .init(),
             date: .now,
             mood: .normal,
-            title: "New note",
-            message: "Template of message"
+            title: withTitle ? "New note" : "",
+            message: long ? "Template of message\nTemplate of message Template of message\nTemplate of message\nTemplate of message\nTemplate of message" : "Template of message"
         )
     }
 }

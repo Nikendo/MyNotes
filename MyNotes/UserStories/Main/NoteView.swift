@@ -14,8 +14,9 @@ struct NoteView: View {
     var body: some View {
         contentView
             .padding()
-            .background(Color.cyan)
-            .cornerRadius(8)
+            .background(Color("D9E8FD"))
+            .cornerRadius(12)
+            .frame(maxHeight: 278)
     }
 
     @ViewBuilder private var contentView: some View {
@@ -34,22 +35,32 @@ struct NoteView: View {
     }
 
     @ViewBuilder private var dateView: some View {
-        Text(
+        let date = Text(
             note.date.formatted(
                 Date.FormatStyle()
-                    .day()
-            )
-            + " " +
+                    .day(.twoDigits)
+            ) + " "
+        )
+            .font(.system(size: 48, weight: .semibold))
+        let month = Text(
             note.date.formatted(
                 Date.FormatStyle()
                     .month(.wide)
             )
         )
-            .font(.title)
+            .font(.system(size: 24, weight: .semibold))
+        ZStack(alignment: .bottomLeading) {
+            Rectangle()
+                .frame(width: 58, height: 16)
+                .foregroundColor(Color("98BCEB"))
+                .padding(.bottom, 4)
+            (date + month)
+                .foregroundColor(Color("333333"))
+        }
     }
 
     @ViewBuilder private var moodView: some View {
-        Image(systemName: "face.smiling.inverse")
+        Text(note.mood.rawValue)
     }
 
     @ViewBuilder private var bottomSection: some View {
@@ -65,13 +76,25 @@ struct NoteView: View {
     }
 
     @ViewBuilder private var titleView: some View {
-        Text(note.title)
-            .font(.title)
+        if !note.title.isEmpty {
+            Text(note.title)
+                .font(.title)
+                .foregroundColor(Color("101010"))
+        } else {
+            Text(note.message)
+                .font(.title)
+                .foregroundColor(Color("101010"))
+        }
     }
 
     @ViewBuilder private var messageView: some View {
-        Text(note.message)
-            .font(.subheadline)
+        if !note.title.isEmpty {
+            Text(note.message)
+                .font(.subheadline)
+                .foregroundColor(Color("333333"))
+        } else {
+            EmptyView()
+        }
     }
 }
 
