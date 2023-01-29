@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		730830A229868185007F80E8 /* NewNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730830A129868185007F80E8 /* NewNoteView.swift */; };
+		730830A62986841C007F80E8 /* RoundedButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 730830A52986841C007F80E8 /* RoundedButtonStyle.swift */; };
 		733DE6092957BF6900508D9C /* MyNotesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733DE6082957BF6900508D9C /* MyNotesApp.swift */; };
 		733DE60B2957BF6900508D9C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733DE60A2957BF6900508D9C /* ContentView.swift */; };
 		733DE60D2957BF6B00508D9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 733DE60C2957BF6B00508D9C /* Assets.xcassets */; };
@@ -40,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		730830A129868185007F80E8 /* NewNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteView.swift; sourceTree = "<group>"; };
+		730830A52986841C007F80E8 /* RoundedButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButtonStyle.swift; sourceTree = "<group>"; };
 		733DE6052957BF6900508D9C /* MyNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		733DE6082957BF6900508D9C /* MyNotesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNotesApp.swift; sourceTree = "<group>"; };
 		733DE60A2957BF6900508D9C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -83,6 +87,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		730830A029868161007F80E8 /* New note */ = {
+			isa = PBXGroup;
+			children = (
+				730830A129868185007F80E8 /* NewNoteView.swift */,
+			);
+			path = "New note";
+			sourceTree = "<group>";
+		};
 		733DE5FC2957BF6900508D9C = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +161,7 @@
 			children = (
 				733DE6352957C01700508D9C /* CustomNavigationBar.swift */,
 				73C7295B295A094400BD4885 /* CustomTabBar.swift */,
+				730830A52986841C007F80E8 /* RoundedButtonStyle.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -164,6 +177,7 @@
 		73C7295F295A3FA500BD4885 /* UserStories */ = {
 			isa = PBXGroup;
 			children = (
+				730830A029868161007F80E8 /* New note */,
 				73C7295E295A3F9C00BD4885 /* Main */,
 			);
 			path = UserStories;
@@ -312,7 +326,9 @@
 				73C7295C295A094400BD4885 /* CustomTabBar.swift in Sources */,
 				73C72964295A49AA00BD4885 /* NoteModel.swift in Sources */,
 				73C72961295A3FCD00BD4885 /* NoteView.swift in Sources */,
+				730830A229868185007F80E8 /* NewNoteView.swift in Sources */,
 				733DE6362957C01700508D9C /* CustomNavigationBar.swift in Sources */,
+				730830A62986841C007F80E8 /* RoundedButtonStyle.swift in Sources */,
 				733DE60B2957BF6900508D9C /* ContentView.swift in Sources */,
 				733DE6092957BF6900508D9C /* MyNotesApp.swift in Sources */,
 			);
