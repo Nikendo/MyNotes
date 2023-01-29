@@ -10,6 +10,8 @@ import SwiftUI
 struct NewNoteView: View {
     @State var note: NoteModel
     @State var selectedDate: Date = .now
+    @State var title: String = ""
+    @State var message: String = ""
 
     var body: some View {
         ZStack {
@@ -26,6 +28,7 @@ struct NewNoteView: View {
         VStack {
             headerView
             subheaderView
+            textsView
             Spacer()
         }
     }
@@ -96,6 +99,53 @@ struct NewNoteView: View {
                 .font(.system(size: 20))
         }
             .padding()
+    }
+
+    // MARK: - Text
+
+    @ViewBuilder private var textsView: some View {
+        VStack {
+            titleView
+            messageView
+                .layoutPriority(2)
+        }
+        .padding(.horizontal)
+    }
+
+    @ViewBuilder private var titleView: some View {
+        ZStack(alignment: .leading) {
+            if title.isEmpty {
+                Text("title")
+                    .font(.system(size: 36, weight: .semibold))
+                    .foregroundColor(Color("A7B1C0"))
+            }
+
+            TextEditor(text: $title)
+                .font(.system(size: 36, weight: .semibold))
+                .foregroundColor(Color("101010"))
+                .scrollContentBackground(.hidden)
+                .lineLimit(2)
+                .frame(minHeight: 48)
+        }
+    }
+
+    @ViewBuilder private var messageView: some View {
+        ZStack(alignment: .leading) {
+            if message.isEmpty {
+                VStack {
+                    Text("write here...")
+                        .font(.system(size: 29, weight: .semibold))
+                    .foregroundColor(Color("A7B1C0"))
+                    Spacer()
+                }
+            }
+
+            TextEditor(text: $message)
+                .font(.system(size: 29, weight: .semibold))
+                .foregroundColor(Color("101010"))
+                .scrollContentBackground(.hidden)
+                .frame(minHeight: 32)
+        }
     }
 }
 
