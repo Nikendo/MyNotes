@@ -25,11 +25,13 @@ struct NewNoteView: View {
     }
 
     @ViewBuilder private var contentView: some View {
-        VStack {
-            headerView
-            subheaderView
-            textsView
-            Spacer()
+        ScrollView {
+            VStack {
+                headerView
+                subheaderView
+                textsView
+                Spacer()
+            }
         }
     }
 
@@ -106,8 +108,9 @@ struct NewNoteView: View {
     @ViewBuilder private var textsView: some View {
         VStack {
             titleView
+                .fixedSize(horizontal: false, vertical: true)
             messageView
-                .layoutPriority(2)
+                .fixedSize(horizontal: false, vertical: true)
         }
         .padding(.horizontal)
     }
