@@ -18,11 +18,13 @@ struct ContentView: View {
     ]
 
     var body: some View {
-        ZStack {
-            backgroundView
-            contentView
-                .ignoresSafeArea()
-            navigationViews
+        NavigationView {
+            ZStack {
+                backgroundView
+                contentView
+                    .ignoresSafeArea()
+                navigationViews
+            }
         }
     }
 

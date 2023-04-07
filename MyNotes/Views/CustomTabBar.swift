@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CustomTabBar: View {
+    @State private var isPresentNewNote = false
+
     var body: some View {
         HStack {
             calendarView
@@ -23,10 +25,11 @@ struct CustomTabBar: View {
     }
 
     @ViewBuilder private var calendarView: some View {
-        Button(
-            action: {
-                print("calendar view action")
-            }, label: {
+        NavigationLink(
+            destination: {
+                EmptyView()
+            },
+            label: {
                 Image(systemName: "calendar")
                     .resizable()
                     .frame(width: 18, height: 18)
@@ -40,7 +43,7 @@ struct CustomTabBar: View {
     @ViewBuilder private var newView: some View {
         Button(
             action: {
-                print("new view action")
+                isPresentNewNote.toggle()
             }, label: {
                 Image(systemName: "plus")
                     .resizable()
@@ -50,13 +53,29 @@ struct CustomTabBar: View {
                     .cornerRadius(28)
             }
         )
+        .fullScreenCover(
+            isPresented: $isPresentNewNote,
+            content: {
+                NewNoteView(
+                    isPresented: $isPresentNewNote,
+                    note: NoteModel(
+                        id: UUID(),
+                        date: .now,
+                        mood: .happy,
+                        title: "",
+                        message: ""
+                    )
+                )
+            }
+        )
     }
 
     @ViewBuilder private var profileView: some View {
-        Button(
-            action: {
-                print("profile view action")
-            }, label: {
+        NavigationLink(
+            destination: {
+                EmptyView()
+            },
+            label: {
                 Image(systemName: "person.crop.circle")
                     .resizable()
                     .frame(width: 18, height: 18)

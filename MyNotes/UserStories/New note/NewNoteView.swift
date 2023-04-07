@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct NewNoteView: View {
+    @Binding var isPresented: Bool
     @State var note: NoteModel
     @State var selectedDate: Date = .now
     @State var title: String = ""
@@ -50,6 +51,9 @@ struct NewNoteView: View {
         Image(systemName: "xmark")
             .foregroundColor(Color("64696F"))
             .padding()
+            .onTapGesture {
+                isPresented = false
+            }
     }
 
     @ViewBuilder private var searchView: some View {
@@ -154,6 +158,6 @@ struct NewNoteView: View {
 
 struct NewNoteView_Previews: PreviewProvider {
     static var previews: some View {
-        NewNoteView(note: .getDefault())
+        NewNoteView(isPresented: .constant(false), note: .getDefault())
     }
 }
