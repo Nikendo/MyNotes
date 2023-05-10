@@ -71,7 +71,7 @@ struct NewNoteView: View {
                 Text("Save")
             }
         )
-        .buttonStyle(RoundedButtonStyle())
+        .foregroundColor(Color("64696F"))
         .padding()
     }
 
