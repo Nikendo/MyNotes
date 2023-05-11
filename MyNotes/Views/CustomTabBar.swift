@@ -57,14 +57,8 @@ struct CustomTabBar: View {
             isPresented: $isPresentNewNote,
             content: {
                 NewNoteView(
-                    isPresented: $isPresentNewNote,
-                    note: NoteModel(
-                        id: UUID(),
-                        date: .now,
-                        mood: .happy,
-                        title: "",
-                        message: ""
-                    )
+                    viewModel: .init(),
+                    isPresented: $isPresentNewNote
                 )
             }
         )

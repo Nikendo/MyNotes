@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct NewNoteView: View {
+    @ObservedObject var viewModel: NewNoteViewModel
     @Binding var isPresented: Bool
-    @State var note: NoteModel
     @State var selectedDate: Date = .now
     @State var title: String = ""
     @State var message: String = ""
@@ -87,7 +87,7 @@ struct NewNoteView: View {
 
     @ViewBuilder private var datePickerView: some View {
         DatePicker(
-            selection: $selectedDate,
+            selection: $viewModel.model.date,
             displayedComponents: .date,
             label: {
                 EmptyView()
@@ -98,13 +98,25 @@ struct NewNoteView: View {
     }
 
     @ViewBuilder private var moodPickerView: some View {
-        ZStack {
-            Circle().opacity(0.1)
-                .frame(maxWidth: 40)
-            Text(note.mood.rawValue)
-                .font(.system(size: 20))
-        }
-            .padding()
+        Picker(
+            selection: $viewModel.model.mood,
+            content: {
+                ForEach(NoteModel.Mood.allCases, id: \.self) {
+                    Text($0.rawValue)
+                        .font(.system(size: 20))
+                }
+            },
+            label: {
+                ZStack {
+                    Circle().opacity(0.1)
+                        .frame(maxWidth: 40)
+                    Text(viewModel.model.mood.rawValue)
+                        .font(.system(size: 20))
+                }
+                .padding()
+            }
+        )
+        .accentColor(Color("64696F"))
     }
 
     // MARK: - Text
@@ -127,7 +139,7 @@ struct NewNoteView: View {
                     .foregroundColor(Color("A7B1C0"))
             }
 
-            TextEditor(text: $title)
+            TextEditor(text: $viewModel.model.title)
                 .font(.system(size: 36, weight: .semibold))
                 .foregroundColor(Color("101010"))
                 .scrollContentBackground(.hidden)
@@ -147,7 +159,7 @@ struct NewNoteView: View {
                 }
             }
 
-            TextEditor(text: $message)
+            TextEditor(text: $viewModel.model.message)
                 .font(.system(size: 29, weight: .semibold))
                 .foregroundColor(Color("101010"))
                 .scrollContentBackground(.hidden)
@@ -158,6 +170,9 @@ struct NewNoteView: View {
 
 struct NewNoteView_Previews: PreviewProvider {
     static var previews: some View {
-        NewNoteView(isPresented: .constant(false), note: .getDefault())
+        NewNoteView(
+            viewModel: .init(),
+            isPresented: .constant(false)
+        )
     }
 }
