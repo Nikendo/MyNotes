@@ -23,6 +23,7 @@
 		73C7295C295A094400BD4885 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C7295B295A094400BD4885 /* CustomTabBar.swift */; };
 		73C72961295A3FCD00BD4885 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C72960295A3FCD00BD4885 /* NoteView.swift */; };
 		73C72964295A49AA00BD4885 /* NoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C72963295A49AA00BD4885 /* NoteModel.swift */; };
+		73D2E0962A23F94100FE0D6D /* NewNoteFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D2E0952A23F94100FE0D6D /* NewNoteFlow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		73C7295B295A094400BD4885 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		73C72960295A3FCD00BD4885 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		73C72963295A49AA00BD4885 /* NoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteModel.swift; sourceTree = "<group>"; };
+		73D2E0952A23F94100FE0D6D /* NewNoteFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteFlow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 			children = (
 				730830A129868185007F80E8 /* NewNoteView.swift */,
 				7393B84E2A0C1EE70021BF2A /* NewNoteViewModel.swift */,
+				73D2E0952A23F94100FE0D6D /* NewNoteFlow.swift */,
 			);
 			path = "New note";
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73D2E0962A23F94100FE0D6D /* NewNoteFlow.swift in Sources */,
 				73C7295C295A094400BD4885 /* CustomTabBar.swift in Sources */,
 				73C72964295A49AA00BD4885 /* NoteModel.swift in Sources */,
 				73C72961295A3FCD00BD4885 /* NoteView.swift in Sources */,

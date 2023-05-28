@@ -19,6 +19,16 @@ struct NewNoteView: View {
             backgroundView
             contentView
         }
+        .onReceive(viewModel.$destination) { destination in
+            switch destination {
+            case .none:
+                break
+            case .save:
+                isPresented = false
+            case .cancel:
+                isPresented = false
+            }
+        }
     }
 
     @ViewBuilder private var backgroundView: some View {
@@ -52,7 +62,7 @@ struct NewNoteView: View {
             .foregroundColor(Color("64696F"))
             .padding()
             .onTapGesture {
-                isPresented = false
+                viewModel.eventSubject.send(.save)
             }
     }
 
@@ -65,7 +75,7 @@ struct NewNoteView: View {
     @ViewBuilder private var saveView: some View {
         Button(
             action: {
-                print("Save")
+                viewModel.eventSubject.send(.save)
             },
             label: {
                 Text("Save")
