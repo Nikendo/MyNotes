@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-
     @State var notes: [NoteModel] = [
         .getDefault(),
         .getDefault(),
@@ -36,7 +35,9 @@ struct ContentView: View {
         VStack {
             CustomNavigationBar()
             Spacer()
-            CustomTabBar()
+            CustomTabBar(createNewNoteCompletion: { newNote in
+                notes.append(newNote)
+            })
         }
     }
 
@@ -56,7 +57,7 @@ struct ContentView: View {
     }
 
     @ViewBuilder private var notesList: some View {
-            ForEach(notes) { note in
+        ForEach(notes.reversed()) { note in
                 NoteView(note: note)
                     .padding(.horizontal)
             }

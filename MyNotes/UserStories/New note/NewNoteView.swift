@@ -181,7 +181,7 @@ struct NewNoteView: View {
 struct NewNoteView_Previews: PreviewProvider {
     static var previews: some View {
         NewNoteView(
-            viewModel: .init(),
+            viewModel: .init(createCompletion: {_ in }),
             isPresented: .constant(false)
         )
     }

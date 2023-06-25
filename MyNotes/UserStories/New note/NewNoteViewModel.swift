@@ -14,9 +14,14 @@ final class NewNoteViewModel: ObservableObject {
 
     private(set) var eventSubject = PassthroughSubject<Flow.Event, Never>()
     private var subscriptions = Set<AnyCancellable>()
+    private let createCompletion: (NoteModel) -> Void
 
-    init(noteModel: NoteModel = .init(id: .init(), date: .now, mood: .normal, title: "", message: "")) {
+    init(
+        noteModel: NoteModel = .init(id: .init(), date: .now, mood: .normal, title: "", message: ""),
+        createCompletion: @escaping (NoteModel) -> Void
+    ) {
         self.model = noteModel
+        self.createCompletion = createCompletion
         bindInput()
     }
 
@@ -35,6 +40,7 @@ final class NewNoteViewModel: ObservableObject {
                 print("message: \(model.message)")
                 print("mood: \(model.mood)")
                 self.destination = .save
+                self.createCompletion(model)
             case .cancel:
                 print("Cancel")
                 self.destination = .cancel

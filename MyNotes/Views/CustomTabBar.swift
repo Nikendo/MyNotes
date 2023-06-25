@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CustomTabBar: View {
     @State private var isPresentNewNote = false
+    var createNewNoteCompletion: (NoteModel) -> Void
 
     var body: some View {
         HStack {
@@ -57,7 +58,7 @@ struct CustomTabBar: View {
             isPresented: $isPresentNewNote,
             content: {
                 NewNoteView(
-                    viewModel: .init(),
+                    viewModel: .init(createCompletion: createNewNoteCompletion),
                     isPresented: $isPresentNewNote
                 )
             }
@@ -83,6 +84,6 @@ struct CustomTabBar: View {
 
 struct CustomTabBar_Previews: PreviewProvider {
     static var previews: some View {
-        CustomTabBar()
+        CustomTabBar(createNewNoteCompletion: {_ in })
     }
 }
