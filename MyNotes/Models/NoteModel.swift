@@ -9,12 +9,12 @@ import Foundation
 
 struct NoteModel: Identifiable {
     let id: UUID
-    let date: Date
-    let mood: Mood
-    let title: String
-    let message: String
+    var date: Date
+    var mood: Mood
+    var title: String
+    var message: String
 
-    enum Mood: String {
+    enum Mood: String, CaseIterable {
         case sad = "😔"
         case normal = "😐"
         case happy = "😃"
