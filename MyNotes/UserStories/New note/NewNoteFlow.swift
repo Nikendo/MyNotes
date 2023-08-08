@@ -8,21 +8,11 @@
 import Foundation
 
 extension NewNoteViewModel {
-    enum Flow {
-        enum ViewState {
-            case normal
-            case error
-        }
-
-        enum Event {
-            case save
-            case cancel
-        }
-
-        enum Destination {
-            case none
-            case save
-            case cancel
-        }
+  enum Flow {
+    enum Destination {
+      case none
+      case save
+      case cancel
     }
+  }
 }

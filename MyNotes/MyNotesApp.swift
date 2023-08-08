@@ -6,13 +6,15 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct MyNotesApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-                .preferredColorScheme(.light)
-        }
+  var body: some Scene {
+    WindowGroup {
+      ContentView()
+        .preferredColorScheme(.light)
     }
+    .modelContainer(for: NoteModel.self)
+  }
 }
