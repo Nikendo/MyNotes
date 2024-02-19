@@ -13,11 +13,11 @@ struct CustomTabBar: View {
   
   var body: some View {
     HStack {
-      calendarView
+//      calendarView
       Spacer()
       newView
       Spacer()
-      profileView
+//      profileView
     }
     .padding(.horizontal, 44)
     .padding(.vertical, 16)
