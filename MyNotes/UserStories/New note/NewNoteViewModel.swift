@@ -8,43 +8,54 @@
 import Combine
 
 final class NewNoteViewModel: ObservableObject {
-    @Published var model: NoteModel
-    @Published private(set) var state: Flow.ViewState = .normal
-    @Published private(set) var destination: Flow.Destination = .none
 
-    private(set) var eventSubject = PassthroughSubject<Flow.Event, Never>()
-    private var subscriptions = Set<AnyCancellable>()
-    private let createCompletion: (NoteModel) -> Void
+  // MARK: - Publishers
 
-    init(
-        noteModel: NoteModel = .init(id: .init(), date: .now, mood: .normal, title: "", message: ""),
-        createCompletion: @escaping (NoteModel) -> Void
-    ) {
-        self.model = noteModel
-        self.createCompletion = createCompletion
-        bindInput()
-    }
+  @Published var model: NoteModel
+  @Published private(set) var destination: Flow.Destination = .none
+  @Published private(set) var canSave: Bool = false
 
-    private func bindInput() {
-        eventSubject.sink { [weak self] event in
-            guard let self = self else {
-                return
-            }
+  // MARK: - Private Properties
 
-            switch event {
-            case .save:
-                print("Save ->")
-                print("id: \(model.id)")
-                print("date: \(model.date)")
-                print("title: \(model.title)")
-                print("message: \(model.message)")
-                print("mood: \(model.mood)")
-                self.destination = .save
-                self.createCompletion(model)
-            case .cancel:
-                print("Cancel")
-                self.destination = .cancel
-            }
-        }.store(in: &subscriptions)
-    }
+  private let createCompletion: (NoteModel) -> Void
+  
+  // MARK: - Init
+
+  init(
+    noteModel: NoteModel = .init(id: .init(), date: .now, mood: .normal, title: "", message: ""),
+    createCompletion: @escaping (NoteModel) -> Void
+  ) {
+    self.model = noteModel
+    self.createCompletion = createCompletion
+    bindInput()
+  }
+
+  func save() {
+    printModel(model)
+    createCompletion(model)
+    destination = .save
+  }
+
+  func cancel() {
+    debugPrint("Cancel")
+    destination = .cancel
+  }
+}
+
+private extension NewNoteViewModel {
+
+  // MARK: - Private Methods
+
+  func bindInput() {
+    $model.map { !$0.title.isEmpty || !$0.message.isEmpty }.assign(to: &$canSave)
+  }
+
+  func printModel(_ model: NoteModel) {
+    debugPrint("Save ->")
+    debugPrint("id: \(model.id)")
+    debugPrint("date: \(model.date)")
+    debugPrint("title: \(model.title)")
+    debugPrint("message: \(model.message)")
+    debugPrint("mood: \(model.mood)")
+  }
 }
