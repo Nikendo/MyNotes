@@ -26,7 +26,7 @@ struct ContentView: View {
   }
   
   @ViewBuilder private var backgroundView: some View {
-    Color("4E7700").ignoresSafeArea()
+    Color(._4_E_7700).ignoresSafeArea()
   }
   
   @ViewBuilder private var navigationViews: some View {
@@ -58,7 +58,7 @@ struct ContentView: View {
   }
   
   @ViewBuilder private var contentHeaderView: some View {
-    Image("landscape_summer_1")
+    Image(.landscapeSummer1)
       .resizable()
       .scaledToFit()
   }
@@ -71,18 +71,6 @@ struct ContentView: View {
           selectedNote = note
           isPresentedSelectedNote = true
         }
-//        .fullScreenCover(isPresented: $isPresentedSelectedNote) {
-//          if let selectedNote {
-//            NewNoteView(viewModel: NewNoteViewModel(
-//              noteModel: selectedNote,
-//              createCompletion: { note in
-//                modelContext.insert(note)
-//                self.selectedNote = nil
-//                self.isPresentedSelectedNote = false
-//              }
-//            ))
-//          }
-//        }
     }
   }
 }
