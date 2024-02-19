@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
+  @EnvironmentObject private var appSettings: AppSettings
   @Environment(\.modelContext) private var modelContext
   @Query(sort: \NoteModel.date) private var notes: [NoteModel] = []
   @State private var selectedNote: NoteModel?
@@ -64,7 +65,7 @@ struct ContentView: View {
   }
   
   @ViewBuilder private var notesList: some View {
-    ForEach(notes.reversed()) { note in
+    ForEach(appSettings.notesOrder == .reversed ? notes.reversed() : notes) { note in
       NoteView(note: note)
         .padding(.horizontal)
         .onTapGesture {

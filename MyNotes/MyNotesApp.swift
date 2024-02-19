@@ -10,11 +10,14 @@ import SwiftData
 
 @main
 struct MyNotesApp: App {
+  @StateObject var appSettings = AppSettings()
+
   var body: some Scene {
     WindowGroup {
       ContentView()
         .preferredColorScheme(.light)
     }
     .modelContainer(for: NoteModel.self)
+    .environmentObject(appSettings)
   }
 }

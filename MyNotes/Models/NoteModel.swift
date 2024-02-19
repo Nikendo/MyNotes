@@ -12,7 +12,6 @@ import SwiftData
 final class NoteModel: Identifiable {
   @Attribute(.unique) let id: UUID
   var date: Date
-//  var mood: String
   var mood: Mood
   var title: String
   var message: String
