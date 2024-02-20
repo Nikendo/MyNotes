@@ -10,6 +10,8 @@ import SwiftUI
 struct CustomNavigationBar: View {
   @EnvironmentObject private var appSettings: AppSettings
   @State private var reversedOrder: Bool = true
+  private let buttonSize: CGFloat = 48
+  private let buttonRadius: CGFloat = 16
 
   var body: some View {
     HStack {
@@ -18,8 +20,7 @@ struct CustomNavigationBar: View {
       trailingGroupViews
     }
     .padding(.horizontal, 8)
-    .background(.clear)
-    .foregroundColor(.primary)
+    .foregroundStyle(appSettings.appTheme.navbarTintColor)
     .onChange(of: reversedOrder) { _, newValue in
       UserDefaults.standard.set(newValue, forKey: "notes_order")
     }
@@ -29,15 +30,31 @@ struct CustomNavigationBar: View {
   }
 
   @ViewBuilder private var menuView: some View {
-    Button(
-      action: {
-        print("menu button action")
+    Menu(
+      content: {
+        ForEach(AppSettings.AppTheme.allCases, id: \.name) { theme in
+          Button(
+            action: {
+              appSettings.appTheme = theme
+            },
+            label: {
+              HStack {
+                Text(theme.name)
+                if appSettings.appTheme == theme {
+                  Image(systemName: "checkmark")
+                }
+              }
+            }
+          )
+        }
       },
       label: {
         Image(systemName: "line.3.horizontal")
+          .frame(width: buttonSize, height: buttonSize)
+          .background(Color.white.opacity(0.6))
+          .clipShape(RoundedRectangle(cornerRadius: buttonRadius))
       }
     )
-    .frame(width: 48, height: 48)
   }
 
   @ViewBuilder private var searchView: some View {
@@ -47,41 +64,50 @@ struct CustomNavigationBar: View {
       },
       label: {
         Image(systemName: "magnifyingglass")
+          .frame(width: buttonSize, height: buttonSize)
+          .background(Color.white.opacity(0.6))
+          .clipShape(RoundedRectangle(cornerRadius: buttonRadius))
       }
     )
-    .frame(width: 48, height: 48)
   }
 
   @ViewBuilder private var orderView: some View {
-    Menu("", systemImage: "arrow.up.arrow.down") {
-      Button(
-        action: {
-          appSettings.notesOrder = .reversed
-        },
-        label: {
-          HStack {
-            Text("First newest")
-            if appSettings.notesOrder == .reversed {
-              Image(systemName: "checkmark")
+    Menu(
+      content: {
+        Button(
+          action: {
+            appSettings.notesOrder = .reversed
+          },
+          label: {
+            HStack {
+              Text("First newest")
+              if appSettings.notesOrder == .reversed {
+                Image(systemName: "checkmark")
+              }
             }
           }
-        }
-      )
-      Button(
-        action: {
-          appSettings.notesOrder = .forwarded
-        },
-        label: {
-          HStack {
-            Text("First oldest")
-            if appSettings.notesOrder == .forwarded {
-              Image(systemName: "checkmark")
+        )
+        Button(
+          action: {
+            appSettings.notesOrder = .forwarded
+          },
+          label: {
+            HStack {
+              Text("First oldest")
+              if appSettings.notesOrder == .forwarded {
+                Image(systemName: "checkmark")
+              }
             }
           }
-        }
-      )
-    }
-    .frame(width: 48, height: 48)
+        )
+      },
+      label: {
+        Image(systemName: "arrow.up.arrow.down")
+          .frame(width: buttonSize, height: buttonSize)
+          .background(Color.white.opacity(0.6))
+          .clipShape(RoundedRectangle(cornerRadius: buttonRadius))
+      }
+    )
   }
 
   @ViewBuilder private var leadingGroupViews: some View {

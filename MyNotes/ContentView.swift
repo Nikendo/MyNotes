@@ -25,11 +25,11 @@ struct ContentView: View {
       }
     }
   }
-  
+
   @ViewBuilder private var backgroundView: some View {
-    Color(._4_E_7700).ignoresSafeArea()
+    appSettings.appTheme.backgroundColor.ignoresSafeArea()
   }
-  
+
   @ViewBuilder private var navigationViews: some View {
     VStack {
       CustomNavigationBar()
@@ -48,7 +48,7 @@ struct ContentView: View {
       }
     }
   }
-  
+
   @ViewBuilder private var contentView: some View {
     ScrollView {
       contentHeaderView
@@ -57,13 +57,13 @@ struct ContentView: View {
         .frame(minHeight: 124)
     }
   }
-  
+
   @ViewBuilder private var contentHeaderView: some View {
-    Image(.landscapeSummer1)
+    appSettings.appTheme.image
       .resizable()
       .scaledToFit()
   }
-  
+
   @ViewBuilder private var notesList: some View {
     ForEach(appSettings.notesOrder == .reversed ? notes.reversed() : notes) { note in
       NoteView(note: note)
