@@ -146,14 +146,16 @@ private extension NewNoteView {
     ZStack(alignment: .topLeading) {
       if viewModel.model.title.isEmpty {
         Text("Title")
-          .font(.system(size: 36, weight: .semibold))
+          .font(.title)
+          .fontWeight(.semibold)
           .foregroundStyle(Color("A7B1C0"))
           .padding(.top, 8)
           .padding(.leading, 4)
       }
 
       TextEditor(text: $viewModel.model.title)
-        .font(.system(size: 36, weight: .semibold))
+        .font(.title)
+        .fontWeight(.semibold)
         .foregroundStyle(Color("101010"))
         .scrollContentBackground(.hidden)
         .lineLimit(2)
@@ -165,14 +167,14 @@ private extension NewNoteView {
     ZStack(alignment: .topLeading) {
       if viewModel.model.message.isEmpty {
         Text("Write here...")
-          .font(.system(size: 29, weight: .semibold))
+          .font(.body)
           .foregroundStyle(Color("A7B1C0"))
           .padding(.top, 8)
           .padding(.leading, 4)
       }
 
       TextEditor(text: $viewModel.model.message)
-        .font(.system(size: 29, weight: .semibold))
+        .font(.body)
         .foregroundStyle(Color("101010"))
         .scrollContentBackground(.hidden)
         .frame(minHeight: 32)
