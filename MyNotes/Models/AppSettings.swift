@@ -26,10 +26,49 @@ final class AppSettings: ObservableObject {
     }
     .store(in: &cancellables)
 
-    $appTheme.sink { theme in
+    $appTheme.sink { [weak self] theme in
       UserDefaults.standard.set(theme.rawValue, forKey: "app_theme")
+      self?.changeAppIconWithoutAlert(theme)
     }
     .store(in: &cancellables)
+  }
+
+  private func changeAppIcon(_ theme: AppTheme) {
+    DispatchQueue.main.async {
+      let iconName: String
+      switch theme {
+      case .spring: iconName = "SpringAppIcon"
+      case .summer: iconName = "SummerAppIcon"
+      case .autumn: iconName = "AutumnAppIcon"
+      case .winter: iconName = "WinterAppIcon"
+      }
+
+      UIApplication.shared.setAlternateIconName(iconName) { error in
+        print("App icon changing error: \(error?.localizedDescription ?? "Undefined error")")
+      }
+    }
+  }
+
+  private func changeAppIconWithoutAlert(_ theme: AppTheme) {
+    if UIApplication.shared.responds(to: #selector(getter: UIApplication.supportsAlternateIcons)) && UIApplication.shared.supportsAlternateIcons { // Mark 1
+
+      let iconName: String
+      switch theme {
+      case .spring: iconName = "SpringAppIcon"
+      case .summer: iconName = "SummerAppIcon"
+      case .autumn: iconName = "AutumnAppIcon"
+      case .winter: iconName = "WinterAppIcon"
+      }
+
+      typealias setAlternateIconNameClosure = @convention(c) (NSObject, Selector, NSString?, @escaping (NSError) -> ()) -> () // Mark 2.
+
+      let selectorString = "_setAlternateIconName:completionHandler:" // Mark 3
+
+      let selector = NSSelectorFromString(selectorString) // Mark 3
+      let imp = UIApplication.shared.method(for: selector) // Mark 4
+      let method = unsafeBitCast(imp, to: setAlternateIconNameClosure.self) // Mark 5
+      method(UIApplication.shared, selector, iconName as NSString?, { _ in }) // Mark 6
+    }
   }
 
   enum NotesOrder: Int, CaseIterable {
