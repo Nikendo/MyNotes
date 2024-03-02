@@ -19,8 +19,7 @@ struct ContentView: View {
     NavigationView {
       ZStack {
         backgroundView
-        contentView
-          .ignoresSafeArea()
+        contentView.ignoresSafeArea()
         navigationViews
       }
     }
@@ -50,12 +49,19 @@ struct ContentView: View {
   }
 
   @ViewBuilder private var contentView: some View {
-    ScrollView {
+    List {
       contentHeaderView
+        .listRowSeparator(.hidden)
+        .listRowInsets(EdgeInsets())
+        .listRowBackground(appSettings.appTheme.backgroundColor)
       notesList
-      Spacer()
-        .frame(minHeight: 124)
+        .listRowSeparator(.hidden)
+        .listRowInsets(EdgeInsets())
+        .listRowBackground(appSettings.appTheme.backgroundColor)
     }
+    .listStyle(.inset)
+    .scrollContentBackground(.hidden)
+    .listRowSpacing(12)
   }
 
   @ViewBuilder private var contentHeaderView: some View {
@@ -72,7 +78,19 @@ struct ContentView: View {
           selectedNote = note
           isPresentedSelectedNote = true
         }
+        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+          Button(
+            role: .destructive,
+            action: { deleteItem(note: note) },
+            label: { Label("Delete", systemImage: "trash") }
+          )
+          .tint(appSettings.appTheme.backgroundColor)
+        }
     }
+  }
+
+  private func deleteItem(note: NoteModel) {
+    modelContext.delete(note)
   }
 }
 
