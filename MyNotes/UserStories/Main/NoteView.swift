@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct NoteView: View {
-
+  @EnvironmentObject private var appSettings: AppSettings
   @State var note: NoteModel
 
   var body: some View {
     contentView
       .padding()
-      .background(Color("D9E8FD"))
+      .background(appSettings.appTheme.noteBackgroundColor)
       .cornerRadius(12)
       .frame(maxHeight: 278)
   }
@@ -52,10 +52,10 @@ struct NoteView: View {
     ZStack(alignment: .bottomLeading) {
       Rectangle()
         .frame(width: 58, height: 16)
-        .foregroundColor(Color("98BCEB"))
+        .foregroundColor(appSettings.appTheme.noteDateRectangleColor)
         .padding(.bottom, 4)
       (date + month)
-        .foregroundColor(Color("333333"))
+        .foregroundColor(appSettings.appTheme.noteDateColor)
     }
   }
 
@@ -76,22 +76,16 @@ struct NoteView: View {
   }
 
   @ViewBuilder private var titleView: some View {
-    if !note.title.isEmpty {
-      Text(note.title)
-        .font(.title)
-        .foregroundColor(Color("101010"))
-    } else {
-      Text(note.message)
-        .font(.title)
-        .foregroundColor(Color("101010"))
-    }
+    Text(!note.title.isEmpty ? note.title : note.message)
+      .font(.title)
+      .foregroundColor(appSettings.appTheme.noteTitleColor)
   }
 
   @ViewBuilder private var messageView: some View {
     if !note.title.isEmpty {
       Text(note.message)
         .font(.subheadline)
-        .foregroundColor(Color("333333"))
+        .foregroundColor(appSettings.appTheme.noteMessageColor)
     } else {
       EmptyView()
     }

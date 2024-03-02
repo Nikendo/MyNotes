@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CustomTabBar: View {
+  @EnvironmentObject private var appSettings: AppSettings
   @State private var isPresentNewNote = false
   var createNewNoteCompletion: (NoteModel) -> Void
   
@@ -50,7 +51,8 @@ struct CustomTabBar: View {
           .resizable()
           .frame(width: 24, height: 24)
           .padding()
-          .background(Color.blue)
+          .background(appSettings.appTheme.newNoteButtonBackgroundColor)
+          .foregroundStyle(appSettings.appTheme.newNoteButtonTintColor)
           .cornerRadius(28)
       }
     )
