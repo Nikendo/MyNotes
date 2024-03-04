@@ -58,10 +58,8 @@ struct CustomNavigationBar: View {
   }
 
   @ViewBuilder private var searchView: some View {
-    Button(
-      action: {
-        print("search button action")
-      },
+    NavigationLink(
+      destination: SearchScreenView(),
       label: {
         Image(systemName: "magnifyingglass")
           .frame(width: buttonSize, height: buttonSize)
