@@ -20,7 +20,7 @@ struct SearchScreenView: View {
 
   var body: some View {
     List(notes.filter { !$0.title.isEmpty ? $0.title.contains(searchableText) : $0.message.contains(searchableText)}) { note in
-      NoteView(note: note)
+      NoteCellView(note: note)
         .listRowSeparator(.hidden)
         .listRowInsets(EdgeInsets())
         .padding(.horizontal)
@@ -34,8 +34,9 @@ struct SearchScreenView: View {
     .scrollContentBackground(.hidden)
     .searchable(text: $searchableText, prompt: "Searchable note...")
     .fullScreenCover(item: $selectedNote) { item in
-      NewNoteView(viewModel: NewNoteViewModel(
+      NoteScreenView(viewModel: NoteScreenViewModel(
         noteModel: item,
+        isPreview: true,
         createCompletion: { note in
           modelContext.insert(note)
           self.selectedNote = nil

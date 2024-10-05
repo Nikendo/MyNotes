@@ -1,5 +1,5 @@
 //
-//  NoteView.swift
+//  NoteCellView.swift
 //  MyNotes
 //
 //  Created by Shmatov Nikita on 26.12.2022.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NoteView: View {
+struct NoteCellView: View {
   @EnvironmentObject private var appSettings: AppSettings
   @State var note: NoteModel
 
@@ -94,6 +94,6 @@ struct NoteView: View {
 
 struct NoteView_Previews: PreviewProvider {
   static var previews: some View {
-    NoteView(note: .getDefault())
+    NoteCellView(note: .getDefault())
   }
 }

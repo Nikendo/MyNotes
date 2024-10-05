@@ -37,8 +37,9 @@ struct ContentView: View {
         modelContext.insert(newNote)
       }
       .fullScreenCover(item: $selectedNote) { item in
-        NewNoteView(viewModel: NewNoteViewModel(
+        NoteScreenView(viewModel: NoteScreenViewModel(
           noteModel: item,
+          isPreview: true,
           createCompletion: { note in
             modelContext.insert(note)
             self.selectedNote = nil
@@ -72,7 +73,7 @@ struct ContentView: View {
 
   @ViewBuilder private var notesList: some View {
     ForEach(appSettings.notesOrder == .reversed ? notes.reversed() : notes) { note in
-      NoteView(note: note)
+      NoteCellView(note: note)
         .padding(.horizontal)
         .onTapGesture {
           selectedNote = note

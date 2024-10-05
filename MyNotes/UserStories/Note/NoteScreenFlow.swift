@@ -1,5 +1,5 @@
 //
-//  NewNoteFlow.swift
+//  NoteScreenViewModel.swift
 //  MyNotes
 //
 //  Created by Shmatov Nikita on 29.05.2023.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension NewNoteViewModel {
+extension NoteScreenViewModel {
   enum Flow {
     enum Destination {
       case none
