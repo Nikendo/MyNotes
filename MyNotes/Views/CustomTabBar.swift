@@ -59,7 +59,7 @@ struct CustomTabBar: View {
     .fullScreenCover(
       isPresented: $isPresentNewNote,
       content: {
-        NewNoteView(viewModel: .init(createCompletion: createNewNoteCompletion))
+        NoteScreenView(viewModel: .init(createCompletion: createNewNoteCompletion))
       }
     )
   }
