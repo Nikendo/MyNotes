@@ -80,10 +80,10 @@ final class AppSettings: ObservableObject {
 
     var name: String {
       switch self {
-      case .spring: "Spring"
-      case .summer: "Summer"
-      case .autumn: "Autumn"
-      case .winter: "Winter"
+      case .spring: String(localized: "Spring")
+      case .summer: String(localized: "Summer")
+      case .autumn: String(localized: "Autumn")
+      case .winter: String(localized: "Winter")
       }
     }
 
