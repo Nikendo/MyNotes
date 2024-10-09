@@ -16,7 +16,7 @@ struct ContentView: View {
   @State private var isPresentedSelectedNote: Bool = false
 
   var body: some View {
-    NavigationView {
+    NavigationStack {
       ZStack {
         backgroundView
         contentView.ignoresSafeArea()

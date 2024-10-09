@@ -16,8 +16,6 @@
 		733DE60D2957BF6B00508D9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 733DE60C2957BF6B00508D9C /* Assets.xcassets */; };
 		733DE6102957BF6B00508D9C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 733DE60F2957BF6B00508D9C /* Preview Assets.xcassets */; };
 		733DE61A2957BF6B00508D9C /* MyNotesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733DE6192957BF6B00508D9C /* MyNotesTests.swift */; };
-		733DE6242957BF6B00508D9C /* MyNotesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733DE6232957BF6B00508D9C /* MyNotesUITests.swift */; };
-		733DE6262957BF6B00508D9C /* MyNotesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733DE6252957BF6B00508D9C /* MyNotesUITestsLaunchTests.swift */; };
 		733DE6362957C01700508D9C /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 733DE6352957C01700508D9C /* CustomNavigationBar.swift */; };
 		733DE6382957CA4700508D9C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 733DE6372957CA4700508D9C /* Images.xcassets */; };
 		733DE63A2957CC6900508D9C /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 733DE6392957CC6900508D9C /* Colors.xcassets */; };
@@ -40,13 +38,6 @@
 			remoteGlobalIDString = 733DE6042957BF6900508D9C;
 			remoteInfo = MyNotes;
 		};
-		733DE6202957BF6B00508D9C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 733DE5FD2957BF6900508D9C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 733DE6042957BF6900508D9C;
-			remoteInfo = MyNotes;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -61,9 +52,6 @@
 		733DE60F2957BF6B00508D9C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		733DE6152957BF6B00508D9C /* MyNotesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyNotesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		733DE6192957BF6B00508D9C /* MyNotesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNotesTests.swift; sourceTree = "<group>"; };
-		733DE61F2957BF6B00508D9C /* MyNotesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyNotesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		733DE6232957BF6B00508D9C /* MyNotesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNotesUITests.swift; sourceTree = "<group>"; };
-		733DE6252957BF6B00508D9C /* MyNotesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNotesUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		733DE6352957C01700508D9C /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		733DE6372957CA4700508D9C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		733DE6392957CC6900508D9C /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -93,13 +81,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		733DE61C2957BF6B00508D9C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -117,7 +98,6 @@
 				735575702CB5C5C70059EA24 /* Localizable.xcstrings */,
 				733DE6072957BF6900508D9C /* MyNotes */,
 				733DE6182957BF6B00508D9C /* MyNotesTests */,
-				733DE6222957BF6B00508D9C /* MyNotesUITests */,
 				733DE6062957BF6900508D9C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -127,7 +107,6 @@
 			children = (
 				733DE6052957BF6900508D9C /* MyNotes.app */,
 				733DE6152957BF6B00508D9C /* MyNotesTests.xctest */,
-				733DE61F2957BF6B00508D9C /* MyNotesUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -164,15 +143,6 @@
 				733DE6192957BF6B00508D9C /* MyNotesTests.swift */,
 			);
 			path = MyNotesTests;
-			sourceTree = "<group>";
-		};
-		733DE6222957BF6B00508D9C /* MyNotesUITests */ = {
-			isa = PBXGroup;
-			children = (
-				733DE6232957BF6B00508D9C /* MyNotesUITests.swift */,
-				733DE6252957BF6B00508D9C /* MyNotesUITestsLaunchTests.swift */,
-			);
-			path = MyNotesUITests;
 			sourceTree = "<group>";
 		};
 		733DE6322957BFAB00508D9C /* Views */ = {
@@ -269,24 +239,6 @@
 			productReference = 733DE6152957BF6B00508D9C /* MyNotesTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		733DE61E2957BF6B00508D9C /* MyNotesUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 733DE62F2957BF6B00508D9C /* Build configuration list for PBXNativeTarget "MyNotesUITests" */;
-			buildPhases = (
-				733DE61B2957BF6B00508D9C /* Sources */,
-				733DE61C2957BF6B00508D9C /* Frameworks */,
-				733DE61D2957BF6B00508D9C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				733DE6212957BF6B00508D9C /* PBXTargetDependency */,
-			);
-			name = MyNotesUITests;
-			productName = MyNotesUITests;
-			productReference = 733DE61F2957BF6B00508D9C /* MyNotesUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -301,10 +253,6 @@
 						CreatedOnToolsVersion = 14.1;
 					};
 					733DE6142957BF6B00508D9C = {
-						CreatedOnToolsVersion = 14.1;
-						TestTargetID = 733DE6042957BF6900508D9C;
-					};
-					733DE61E2957BF6B00508D9C = {
 						CreatedOnToolsVersion = 14.1;
 						TestTargetID = 733DE6042957BF6900508D9C;
 					};
@@ -326,7 +274,6 @@
 			targets = (
 				733DE6042957BF6900508D9C /* MyNotes */,
 				733DE6142957BF6B00508D9C /* MyNotesTests */,
-				733DE61E2957BF6B00508D9C /* MyNotesUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -345,13 +292,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		733DE6132957BF6B00508D9C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		733DE61D2957BF6B00508D9C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -391,15 +331,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		733DE61B2957BF6B00508D9C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				733DE6262957BF6B00508D9C /* MyNotesUITestsLaunchTests.swift in Sources */,
-				733DE6242957BF6B00508D9C /* MyNotesUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -407,11 +338,6 @@
 			isa = PBXTargetDependency;
 			target = 733DE6042957BF6900508D9C /* MyNotes */;
 			targetProxy = 733DE6162957BF6B00508D9C /* PBXContainerItemProxy */;
-		};
-		733DE6212957BF6B00508D9C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 733DE6042957BF6900508D9C /* MyNotes */;
-			targetProxy = 733DE6202957BF6B00508D9C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -654,52 +580,6 @@
 			};
 			name = Release;
 		};
-		733DE6302957BF6B00508D9C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Z22BS5844A;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.nikendo.app.MyNotesUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = MyNotes;
-			};
-			name = Debug;
-		};
-		733DE6312957BF6B00508D9C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Z22BS5844A;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.nikendo.app.MyNotesUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = MyNotes;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -726,15 +606,6 @@
 			buildConfigurations = (
 				733DE62D2957BF6B00508D9C /* Debug */,
 				733DE62E2957BF6B00508D9C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		733DE62F2957BF6B00508D9C /* Build configuration list for PBXNativeTarget "MyNotesUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				733DE6302957BF6B00508D9C /* Debug */,
-				733DE6312957BF6B00508D9C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
