@@ -20,6 +20,10 @@
 		733DE63A2957CC6900508D9C /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 733DE6392957CC6900508D9C /* Colors.xcassets */; };
 		735575712CB5C5C70059EA24 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 735575702CB5C5C70059EA24 /* Localizable.xcstrings */; };
 		735E99872CB83B4B00436DCB /* TextFieldClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735E99862CB83B4B00436DCB /* TextFieldClearButton.swift */; };
+		7378A6672CB8907E0074A5C4 /* NoteMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7378A6662CB8907E0074A5C4 /* NoteMapper.swift */; };
+		73924C592CB88E290034D62E /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73924C582CB88E290034D62E /* Note.swift */; };
+		73924C5B2CB88E3E0034D62E /* Mood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73924C5A2CB88E3E0034D62E /* Mood.swift */; };
+		73924C602CB88F860034D62E /* NoteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73924C5F2CB88F860034D62E /* NoteData.swift */; };
 		7393B84F2A0C1EE70021BF2A /* NoteScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7393B84E2A0C1EE70021BF2A /* NoteScreenViewModel.swift */; };
 		7394189D2A820BDA00AC553B /* PreviewNoteContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7394189C2A820BDA00AC553B /* PreviewNoteContainer.swift */; };
 		73C7295C295A094400BD4885 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C7295B295A094400BD4885 /* CustomTabBar.swift */; };
@@ -56,6 +60,10 @@
 		733DE6392957CC6900508D9C /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		735575702CB5C5C70059EA24 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		735E99862CB83B4B00436DCB /* TextFieldClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldClearButton.swift; sourceTree = "<group>"; };
+		7378A6662CB8907E0074A5C4 /* NoteMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteMapper.swift; sourceTree = "<group>"; };
+		73924C582CB88E290034D62E /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		73924C5A2CB88E3E0034D62E /* Mood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mood.swift; sourceTree = "<group>"; };
+		73924C5F2CB88F860034D62E /* NoteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteData.swift; sourceTree = "<group>"; };
 		7393B84E2A0C1EE70021BF2A /* NoteScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteScreenViewModel.swift; sourceTree = "<group>"; };
 		7394189C2A820BDA00AC553B /* PreviewNoteContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewNoteContainer.swift; sourceTree = "<group>"; };
 		73C7295B295A094400BD4885 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
@@ -106,6 +114,8 @@
 		733DE6072957BF6900508D9C /* MyNotes */ = {
 			isa = PBXGroup;
 			children = (
+				73924C5D2CB88F660034D62E /* DataLayer */,
+				73924C572CB88B450034D62E /* DomainLayer */,
 				735E99852CB83B4700436DCB /* Modifiers */,
 				7394189B2A820BB400AC553B /* Support */,
 				73C72962295A499600BD4885 /* Models */,
@@ -154,6 +164,48 @@
 				735E99862CB83B4B00436DCB /* TextFieldClearButton.swift */,
 			);
 			path = Modifiers;
+			sourceTree = "<group>";
+		};
+		7378A6642CB8905F0074A5C4 /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				7378A6662CB8907E0074A5C4 /* NoteMapper.swift */,
+			);
+			path = Mapper;
+			sourceTree = "<group>";
+		};
+		73924C572CB88B450034D62E /* DomainLayer */ = {
+			isa = PBXGroup;
+			children = (
+				73924C5C2CB88F550034D62E /* Entity */,
+			);
+			path = DomainLayer;
+			sourceTree = "<group>";
+		};
+		73924C5C2CB88F550034D62E /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				73924C5A2CB88E3E0034D62E /* Mood.swift */,
+				73924C582CB88E290034D62E /* Note.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		73924C5D2CB88F660034D62E /* DataLayer */ = {
+			isa = PBXGroup;
+			children = (
+				7378A6642CB8905F0074A5C4 /* Mapper */,
+				73924C5E2CB88F6D0034D62E /* Entity */,
+			);
+			path = DataLayer;
+			sourceTree = "<group>";
+		};
+		73924C5E2CB88F6D0034D62E /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				73924C5F2CB88F860034D62E /* NoteData.swift */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		7394189B2A820BB400AC553B /* Support */ = {
@@ -310,12 +362,16 @@
 				73DDE75C2CB56C670015FB29 /* SystemIcons.swift in Sources */,
 				73C7295C295A094400BD4885 /* CustomTabBar.swift in Sources */,
 				73FE6C342BC6C64700567D69 /* NoteScreenViewState.swift in Sources */,
+				73924C5B2CB88E3E0034D62E /* Mood.swift in Sources */,
 				7309C1C02B83FCF200C63A66 /* AppSettings.swift in Sources */,
 				73C72964295A49AA00BD4885 /* NoteModel.swift in Sources */,
 				73C72961295A3FCD00BD4885 /* NoteCellView.swift in Sources */,
 				7393B84F2A0C1EE70021BF2A /* NoteScreenViewModel.swift in Sources */,
 				730830A229868185007F80E8 /* NoteScreenView.swift in Sources */,
 				733DE6362957C01700508D9C /* CustomNavigationBar.swift in Sources */,
+				7378A6672CB8907E0074A5C4 /* NoteMapper.swift in Sources */,
+				73924C592CB88E290034D62E /* Note.swift in Sources */,
+				73924C602CB88F860034D62E /* NoteData.swift in Sources */,
 				730830A62986841C007F80E8 /* RoundedButtonStyle.swift in Sources */,
 				733DE60B2957BF6900508D9C /* ContentView.swift in Sources */,
 				7394189D2A820BDA00AC553B /* PreviewNoteContainer.swift in Sources */,

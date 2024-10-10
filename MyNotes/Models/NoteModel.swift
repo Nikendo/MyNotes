@@ -8,6 +8,7 @@
 import Foundation
 import SwiftData
 
+
 @Model
 final class NoteModel: Identifiable {
   @Attribute(.unique) let id: UUID
