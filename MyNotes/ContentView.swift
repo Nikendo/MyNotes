@@ -14,12 +14,13 @@ struct ContentView: View {
   @Query(sort: \NoteModel.date) private var notes: [NoteModel] = []
   @State private var selectedNote: NoteModel?
   @State private var isPresentedSelectedNote: Bool = false
-
+  @State private var searchableText: String = ""
+  
   var body: some View {
     NavigationStack {
       ZStack {
         backgroundView
-        contentView.ignoresSafeArea()
+        contentView.ignoresSafeArea(.container)
         navigationViews
       }
     }
@@ -31,7 +32,7 @@ struct ContentView: View {
 
   @ViewBuilder private var navigationViews: some View {
     VStack {
-      CustomNavigationBar()
+      CustomNavigationBar(searchableText: $searchableText)
       Spacer()
       CustomTabBar { newNote in
         modelContext.insert(newNote)
@@ -72,6 +73,13 @@ struct ContentView: View {
   }
 
   @ViewBuilder private var notesList: some View {
+    var notes: [NoteModel] {
+      guard !searchableText.isEmpty else { return self.notes }
+      return self.notes.filter {
+        !$0.title.lowercased().isEmpty ? $0.title.lowercased().contains(searchableText.lowercased()) : $0.message.lowercased().contains(searchableText.lowercased())
+      }
+    }
+    
     ForEach(appSettings.notesOrder == .reversed ? notes.reversed() : notes) { note in
       NoteCellView(note: note)
         .padding(.horizontal)
@@ -88,6 +96,7 @@ struct ContentView: View {
           .tint(appSettings.appTheme.backgroundColor)
         }
     }
+    .padding(.bottom)
   }
 
   private func deleteItem(note: NoteModel) {

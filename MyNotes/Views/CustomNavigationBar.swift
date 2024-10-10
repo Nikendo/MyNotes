@@ -8,15 +8,30 @@
 import SwiftUI
 
 struct CustomNavigationBar: View {
+  
+  enum Field: Hashable {
+    case search
+    case none
+  }
+  
   @EnvironmentObject private var appSettings: AppSettings
   @State private var reversedOrder: Bool = true
+  @State private var isSearchMode: Bool = false
+  @Binding private var searchableText: String
+  @FocusState private var focusedField: Field?
   private let buttonSize: CGFloat = 48
   private let buttonRadius: CGFloat = 16
 
+  init(searchableText: Binding<String>) {
+    _searchableText = searchableText
+  }
+  
   var body: some View {
     HStack {
       leadingGroupViews
-      Spacer()
+      if !isSearchMode {
+        Spacer()
+      }
       trailingGroupViews
     }
     .padding(.horizontal, 8)
@@ -58,15 +73,28 @@ struct CustomNavigationBar: View {
   }
 
   @ViewBuilder private var searchView: some View {
-    NavigationLink(
-      destination: SearchScreenView(),
-      label: {
-        Image(systemName: "magnifyingglass")
-          .frame(width: buttonSize, height: buttonSize)
-          .background(Color.white.opacity(0.6))
-          .clipShape(RoundedRectangle(cornerRadius: buttonRadius))
+    HStack {
+      Image(systemName: "magnifyingglass")
+        .frame(width: buttonSize, height: buttonSize)
+        .onTapGesture {
+          withAnimation {
+            isSearchMode.toggle()
+            focusedField = isSearchMode ? .search : nil
+          }
+        }
+      if isSearchMode {
+        TextField("Searchable note...", text: $searchableText)
+          .autocorrectionDisabled()
+          .textInputAutocapitalization(.never)
+          .focused($focusedField, equals: Field.search)
+          .showClearButton($searchableText)
+          .onSubmit {
+            focusedField = nil
+          }
       }
-    )
+    }
+    .background(Color.white.opacity(isSearchMode ? 1 : 0.6))
+    .clipShape(RoundedRectangle(cornerRadius: buttonRadius))
   }
 
   @ViewBuilder private var orderView: some View {
@@ -124,6 +152,6 @@ struct CustomNavigationBar: View {
 
 struct CustomNavigationBar_Previews: PreviewProvider {
   static var previews: some View {
-    CustomNavigationBar()
+    CustomNavigationBar(searchableText: .constant(""))
   }
 }
