@@ -11,13 +11,20 @@ import SwiftData
 @main
 struct MyNotesApp: App {
   @StateObject var appSettings = AppSettings()
-
+  private let repository: NoteRepository = {
+    do {
+      let modelContainer = try ModelContainer(for: NoteData.self)
+      return NoteRepositoryImpl(modelContext: ModelContext(modelContainer))
+    } catch {
+      fatalError(error.localizedDescription)
+    }
+  }()
+  
   var body: some Scene {
     WindowGroup {
-      ContentView()
+      ContentView(repository: repository)
         .preferredColorScheme(.light)
     }
-    .modelContainer(for: NoteModel.self)
     .environmentObject(appSettings)
   }
 }

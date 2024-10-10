@@ -32,12 +32,14 @@ struct NoteScreenView: View {
       backgroundView
       contentView
     }
+    .onAppear(perform: viewModel.bindInput)
     .onReceive(viewModel.$destination) { destination in
       switch destination {
       case .save, .cancel: dismiss()
       case .none: break
       }
     }
+    .navigationBarBackButtonHidden()
   }
 }
 
@@ -112,7 +114,7 @@ private extension NoteScreenView {
 
   var datePickerView: some View {
     DatePicker(
-      selection: $viewModel.model.date,
+      selection: $viewModel.date,
       displayedComponents: .date,
       label: {
         EmptyView()
@@ -125,9 +127,9 @@ private extension NoteScreenView {
 
   var moodPickerView: some View {
     Picker(
-      selection: $viewModel.model.mood,
+      selection: $viewModel.mood,
       content: {
-        ForEach(NoteModel.Mood.allCases, id: \.self) {
+        ForEach(Mood.allCases, id: \.self) {
           Text($0.rawValue)
             .font(.system(size: 20))
         }
@@ -136,7 +138,7 @@ private extension NoteScreenView {
         ZStack {
           Circle().opacity(0.1)
             .frame(maxWidth: 40)
-          Text(viewModel.model.mood.rawValue)
+          Text(viewModel.mood.rawValue)
             .font(.system(size: 20))
         }
         .padding()
@@ -157,8 +159,8 @@ private extension NoteScreenView {
 
   var titleView: some View {
     ZStack(alignment: .topLeading) {
-      Text(viewModel.model.title)
-        .font(.body)
+      Text(viewModel.title)
+        .font(.title)
         .foregroundStyle(Color(._101010))
         .opacity(0)
         .lineSpacing(8)
@@ -166,12 +168,12 @@ private extension NoteScreenView {
           GeometryReader { geometry in
             Color.clear.onAppear {
               print("Title height: \(geometry.size.height)")
-              self.titleHeight = geometry.size.height
+              self.titleHeight = geometry.size.height + 8
             }
           }
         }
       
-      if viewModel.model.title.isEmpty && viewModel.noteViewState != .preview {
+      if viewModel.title.isEmpty && viewModel.noteViewState != .preview {
         Text("Title")
           .font(.title)
           .fontWeight(.semibold)
@@ -180,19 +182,19 @@ private extension NoteScreenView {
           .padding(.leading, 4)
       }
       
-      TextEditor(text: $viewModel.model.title)
+      TextEditor(text: $viewModel.title)
         .font(.title)
         .fontWeight(.semibold)
         .foregroundStyle(Color(._101010))
         .scrollContentBackground(.hidden)
-        .frame(minHeight: viewModel.model.title.isEmpty ? 48 : titleHeight)
+        .frame(minHeight: viewModel.title.isEmpty ? 48 : titleHeight)
         .disabled(viewModel.noteViewState == .preview)
     }
   }
 
   var messageView: some View {
     ZStack(alignment: .topLeading) {
-      Text(viewModel.model.message)
+      Text(viewModel.message)
         .font(.body)
         .foregroundStyle(Color(._101010))
         .opacity(0)
@@ -200,12 +202,12 @@ private extension NoteScreenView {
         .background {
           GeometryReader { geometry in
             Color.clear.onAppear {
-              self.messageHeight = geometry.size.height
+              self.messageHeight = geometry.size.height + 8
             }
           }
         }
       
-      if viewModel.model.message.isEmpty && viewModel.noteViewState != .preview {
+      if viewModel.message.isEmpty && viewModel.noteViewState != .preview {
         Text("Write here...")
           .font(.body)
           .foregroundStyle(Color(.A_7_B_1_C_0))
@@ -213,29 +215,30 @@ private extension NoteScreenView {
           .padding(.leading, 4)
       }
       
-      TextEditor(text: $viewModel.model.message)
+      TextEditor(text: $viewModel.message)
         .font(.body)
         .foregroundStyle(Color(._101010))
         .scrollContentBackground(.hidden)
-        .frame(minHeight: viewModel.model.message.isEmpty ? 32 : messageHeight)
+        .frame(minHeight: viewModel.message.isEmpty ? 32 : messageHeight)
         .disabled(viewModel.noteViewState == .preview)
     }
   }
 }
 
-struct NewNoteView_Previews: PreviewProvider {
-  static var previews: some View {
-    NoteScreenView(viewModel: .init(createCompletion: {_ in }))
-    NoteScreenView(viewModel: .init(
-      noteModel: .init(
-        id: UUID(),
-        date: Date(),
-        mood: .normal,
-        title: "Multilined\nText\nFor this\nnote",
-        message: "Multy\nMylty\nMultilined description\nFor\nThis note"
-      ),
-      isPreview: true,
-      createCompletion: { _ in }
-    ))
-  }
+import SwiftData
+
+#Preview {
+  let modelContext = ModelContext(previewContainer)
+  let repository: NoteRepository = NoteRepositoryImpl(modelContext: modelContext)
+  let saveNoteUseCase: SaveNoteUseCase = SaveNoteUseCaseImpl(repository: repository)
+
+  NoteScreenBuilder(saveNoteUseCase: saveNoteUseCase).build()
+}
+
+#Preview {
+  let modelContext = ModelContext(previewContainer)
+  let repository: NoteRepository = NoteRepositoryImpl(modelContext: ModelContext(previewContainer))
+  let saveNoteUseCase: SaveNoteUseCase = SaveNoteUseCaseImpl(repository: NoteRepositoryImpl(modelContext: ModelContext(previewContainer)))
+  
+  NoteScreenBuilder(saveNoteUseCase: saveNoteUseCase, note: NoteEntityMock.mock, isPreview: true).build()
 }
