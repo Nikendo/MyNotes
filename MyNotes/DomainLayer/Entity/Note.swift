@@ -1,13 +1,13 @@
 //
 //  Note.swift
-//  MyNotes
+  //  MyNotes
 //
 //  Created by Shmatov Nikita on 11.10.2024.
 //
 
 import Foundation
 
-struct Note {
+struct Note: Hashable, Identifiable {
   let id: UUID
   let date: Date
   let mood: Mood

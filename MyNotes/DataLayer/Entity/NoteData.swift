@@ -25,3 +25,24 @@ final class NoteData {
     self.message = message
   }
 }
+
+extension Mood: Codable {
+  init(from decoder: Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    let val = try container.decode(String.self)
+    self = switch val {
+    case "😔": Mood.sad
+    case "😐": Mood.normal
+    case "😃": Mood.happy
+    default: throw DecodingError.typeMismatch(Mood.self, DecodingError.Context.init(
+        codingPath: container.codingPath,
+        debugDescription: "Unexpected value of '\(val)'",
+        underlyingError: nil
+      ))
+    }
+  }
+
+  enum CodingKeys: CodingKey {
+    case sad, normal, happy
+  }
+}

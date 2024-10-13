@@ -11,9 +11,9 @@ import SwiftData
 @MainActor
 let previewContainer: ModelContainer = {
   do {
-    let container = try ModelContainer(for: NoteModel.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
+    let container = try ModelContainer(for: NoteData.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
     for _ in 0..<5 {
-      container.mainContext.insert(NoteModel(
+      container.mainContext.insert(NoteData(
         id: UUID(),
         date: .now,
         mood: .normal,
