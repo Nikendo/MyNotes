@@ -16,12 +16,12 @@ final class NoteListViewModel: ObservableObject {
     case newNote
   }
   
+  private let model: NoteListModel
+  
   @Published private var allNotes: [Note] = []
   @Published var notes: [Note] = []
   @Published var searchableText: String = ""
   @Published var navigationPath: NavigationPath
-  
-  private let model: NoteListModel
   
   init(model: NoteListModel, navigationPath: NavigationPath) {
     self.model = model
@@ -40,7 +40,6 @@ final class NoteListViewModel: ObservableObject {
     Task {
       do {
         allNotes = try await model.fetchAllNotes()
-        notes = allNotes
       } catch {
         print(error.localizedDescription)
       }

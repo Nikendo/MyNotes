@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Note: Hashable, Identifiable {
+struct Note: Hashable {
   let id: UUID
   let date: Date
   let mood: Mood

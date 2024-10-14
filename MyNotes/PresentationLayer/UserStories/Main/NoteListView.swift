@@ -62,7 +62,7 @@ struct NoteListView: View {
   }
   
   private var notesList: some View {
-    ForEach(appSettings.notesOrder == .reversed ? viewModel.notes.reversed() : viewModel.notes, id: \.id) { note in
+    ForEach(appSettings.notesOrder == .reversed ? viewModel.notes.reversed() : viewModel.notes, id: \.hashValue) { note in
       NoteCellView(note: note)
         .padding(.horizontal)
         .onTapGesture {
