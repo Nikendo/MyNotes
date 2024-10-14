@@ -28,15 +28,22 @@ final class NoteListViewModel: ObservableObject {
     self.navigationPath = navigationPath
   }
   
-  func fetchAllNotes() async throws -> [Note] {
-    try await model.fetchAllNotes()
-  }
-  
   func fetchAllNotes() async {
     do {
       allNotes = try await model.fetchAllNotes()
     } catch {
       print(error.localizedDescription)
+    }
+  }
+  
+  func refreshData() {
+    Task {
+      do {
+        allNotes = try await model.fetchAllNotes()
+        notes = allNotes
+      } catch {
+        print(error.localizedDescription)
+      }
     }
   }
   

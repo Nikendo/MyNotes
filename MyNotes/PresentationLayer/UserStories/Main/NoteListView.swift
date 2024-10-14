@@ -10,7 +10,6 @@ import SwiftUI
 struct NoteListView: View {
   @EnvironmentObject private var appSettings: AppSettings
   @StateObject private var viewModel: NoteListViewModel
-  @State private var searchableText: String = ""
   private let saveNoteUseCase: SaveNoteUseCase
   
   init(viewModel: NoteListViewModel, saveNoteUseCase: SaveNoteUseCase) {
@@ -42,12 +41,15 @@ struct NoteListView: View {
       .listRowSpacing(12)
       .background(appSettings.appTheme.backgroundColor)
       .ignoresSafeArea(.container)
-      .customNavigationBar(searchableText: $searchableText)
+      .customNavigationBar(searchableText: $viewModel.searchableText)
       .customBottomNavigationbar {
         viewModel.navigateToNewNote()
       }
     }
     .onAppear(perform: viewModel.bindInput)
+    .onChange(of: viewModel.navigationPath) {
+      viewModel.refreshData()
+    }
     .task {
       await viewModel.fetchAllNotes()
     }

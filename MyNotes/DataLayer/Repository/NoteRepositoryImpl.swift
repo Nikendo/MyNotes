@@ -6,6 +6,7 @@
 //
 
 import SwiftData
+import Foundation
 
 final class NoteRepositoryImpl: NoteRepository {
   
@@ -16,15 +17,32 @@ final class NoteRepositoryImpl: NoteRepository {
   }
   
   func save(note: Note) async throws {
-    let persistentModel = NoteData(from: note)
-    modelContext.insert(persistentModel)
+    var persistentModel: NoteData
+    
+    // check if the not is existed
+    let descriptor = FetchDescriptor<NoteData>()
+    if let fromContext = try modelContext.fetch(descriptor).first(where: { $0.id == note.id }) {
+      // if the note is existed, update it
+      fromContext.title = note.title
+      fromContext.message = note.message
+      fromContext.date = note.date
+      fromContext.mood = note.mood
+    } else {
+      // else, create new from the domain model
+      persistentModel = NoteData(from: note)
+      modelContext.insert(persistentModel)
+    }
     
     guard modelContext.hasChanges else { return }
     try modelContext.save()
   }
   
   func delete(note: Note) async throws {
-    let persistentModel = NoteData(from: note)
+    let descriptor = FetchDescriptor<NoteData>()
+    guard let persistentModel = try modelContext.fetch(descriptor).first(where: { $0.id == note.id }) else {
+      print("Note with id \(note.id) not found.")
+      return
+    }
     modelContext.delete(persistentModel)
     
     guard modelContext.hasChanges else { return }
