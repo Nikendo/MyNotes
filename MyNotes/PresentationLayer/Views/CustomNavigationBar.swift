@@ -21,7 +21,7 @@ struct CustomNavigationBar: View {
   @FocusState private var focusedField: Field?
   private let buttonSize: CGFloat = 48
   private let buttonRadius: CGFloat = 16
-
+  
   init(searchableText: Binding<String>) {
     _searchableText = searchableText
   }
@@ -43,24 +43,19 @@ struct CustomNavigationBar: View {
       reversedOrder = UserDefaults.standard.bool(forKey: "notes_order")
     })
   }
-
+  
   @ViewBuilder private var menuView: some View {
     Menu(
       content: {
         ForEach(AppSettings.AppTheme.allCases, id: \.name) { theme in
-          Button(
-            action: {
-              appSettings.appTheme = theme
-            },
-            label: {
-              HStack {
-                Text(theme.name)
-                if appSettings.appTheme == theme {
-                  Image(systemName: "checkmark")
-                }
+          Button(action: { appSettings.appTheme = theme }) {
+            HStack {
+              Text(theme.name)
+              if appSettings.appTheme == theme {
+                Image(systemName: "checkmark")
               }
             }
-          )
+          }
         }
       },
       label: {
@@ -71,7 +66,7 @@ struct CustomNavigationBar: View {
       }
     )
   }
-
+  
   @ViewBuilder private var searchView: some View {
     HStack {
       Image(systemName: "magnifyingglass")
@@ -96,36 +91,26 @@ struct CustomNavigationBar: View {
     .background(Color.white.opacity(isSearchMode ? 1 : 0.6))
     .clipShape(RoundedRectangle(cornerRadius: buttonRadius))
   }
-
+  
   @ViewBuilder private var orderView: some View {
     Menu(
       content: {
-        Button(
-          action: {
-            appSettings.notesOrder = .reversed
-          },
-          label: {
-            HStack {
-              Text("First newest")
-              if appSettings.notesOrder == .reversed {
-                Image(systemName: "checkmark")
-              }
+        Button(action: { appSettings.notesOrder = .reversed }) {
+          HStack {
+            Text("First newest")
+            if appSettings.notesOrder == .reversed {
+              Image(systemName: "checkmark")
             }
           }
-        )
-        Button(
-          action: {
-            appSettings.notesOrder = .forwarded
-          },
-          label: {
-            HStack {
-              Text("First oldest")
-              if appSettings.notesOrder == .forwarded {
-                Image(systemName: "checkmark")
-              }
+        }
+        Button(action: { appSettings.notesOrder = .forwarded }) {
+          HStack {
+            Text("First oldest")
+            if appSettings.notesOrder == .forwarded {
+              Image(systemName: "checkmark")
             }
           }
-        )
+        }
       },
       label: {
         Image(systemName: "arrow.up.arrow.down")
@@ -135,14 +120,16 @@ struct CustomNavigationBar: View {
       }
     )
   }
-
-  @ViewBuilder private var leadingGroupViews: some View {
+  
+  @ViewBuilder
+  private var leadingGroupViews: some View {
     HStack {
       menuView
     }
   }
-
-  @ViewBuilder private var trailingGroupViews: some View {
+  
+  @ViewBuilder
+  private var trailingGroupViews: some View {
     HStack {
       searchView
       orderView
@@ -150,8 +137,7 @@ struct CustomNavigationBar: View {
   }
 }
 
-struct CustomNavigationBar_Previews: PreviewProvider {
-  static var previews: some View {
-    CustomNavigationBar(searchableText: .constant(""))
-  }
+#Preview {
+  CustomNavigationBar(searchableText: .constant(""))
+    .environmentObject(AppSettings())
 }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NoteCellView: View {
   @EnvironmentObject private var appSettings: AppSettings
-  @State var note: NoteModel
+  @State var note: Note
 
   var body: some View {
     contentView
@@ -94,6 +94,6 @@ struct NoteCellView: View {
 
 struct NoteView_Previews: PreviewProvider {
   static var previews: some View {
-    NoteCellView(note: .getDefault())
+    NoteCellView(note: NoteEntityMock.mock)
   }
 }
