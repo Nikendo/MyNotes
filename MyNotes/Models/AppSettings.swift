@@ -99,7 +99,7 @@ final class AppSettings: ObservableObject {
     var backgroundColor: Color {
       switch self {
       case .spring: Color(._7_D_9115)
-      case .summer: Color(._07423_C)
+      case .summer: SummerColors.background
       case .autumn: Color(._4_F_2423)
       case .winter: Color(.BDD_7_EE)
       }
@@ -108,7 +108,7 @@ final class AppSettings: ObservableObject {
     var noteBackgroundColor: Color {
       switch self {
       case .spring: Color(.D_9_E_8_FD)
-      case .summer: Color(.D_9_E_8_FD)
+      case .summer: SummerColors.primaryContrainer
       case .autumn: Color(._73350_F)
       case .winter: Color(.ECEBFF)
       }
@@ -117,7 +117,7 @@ final class AppSettings: ObservableObject {
     var noteTitleColor: Color {
       switch self {
       case .spring: Color(._101010)
-      case .summer: Color(._101010)
+      case .summer: SummerColors.onPrimaryContrainer
       case .autumn: Color(.FFF_379)
       case .winter: Color(._101010)
       }
@@ -126,7 +126,7 @@ final class AppSettings: ObservableObject {
     var noteMessageColor: Color {
       switch self {
       case .spring: Color(._333333)
-      case .summer: Color(._333333)
+      case .summer: SummerColors.onSecondaryContrainer
       case .autumn: Color(.FDFFC_4)
       case .winter: Color(._333333)
       }
@@ -135,7 +135,7 @@ final class AppSettings: ObservableObject {
     var noteDateColor: Color {
       switch self {
       case .spring: Color(._333333)
-      case .summer: Color(._333333)
+      case .summer: SummerColors.onPrimaryContrainer
       case .autumn: Color(.FEA_017)
       case .winter: Color(._333333)
       }
@@ -144,7 +144,7 @@ final class AppSettings: ObservableObject {
     var noteDateRectangleColor: Color {
       switch self {
       case .spring: Color(._98_BCEB)
-      case .summer: Color(._98_BCEB)
+      case .summer: SummerColors.dateBackground
       case .autumn: Color(.D_8001_B)
       case .winter: Color(._98_BCEB)
       }
@@ -153,7 +153,7 @@ final class AppSettings: ObservableObject {
     var newNoteButtonBackgroundColor: Color {
       switch self {
       case .spring: .blue
-      case .summer: .blue
+      case .summer: SummerColors.newNoteButtonContainer
       case .autumn: Color(.FFF_379)
       case .winter: .blue
       }
@@ -162,7 +162,7 @@ final class AppSettings: ObservableObject {
     var newNoteButtonTintColor: Color {
       switch self {
       case .spring: .white
-      case .summer: .white
+      case .summer: SummerColors.background
       case .autumn: Color(._333333)
       case .winter: .white
       }
@@ -171,10 +171,37 @@ final class AppSettings: ObservableObject {
     var navbarTintColor: Color {
       switch self {
       case .spring: .primary
-      case .summer: .primary
+      case .summer: SummerColors.onPrimaryContrainer
       case .autumn: .primary
       case .winter: .primary
       }
     }
+    
+    var navbarBackgroundColor: Color {
+      switch self {
+      case .spring: .white
+      case .summer: SummerColors.primaryContrainer
+      case .autumn: .white
+      case .winter: .white
+      }
+    }
   }
+}
+
+protocol Colors {
+  static var background: Color { get }
+  static var primaryContrainer: Color { get }
+  static var onPrimaryContrainer: Color { get }
+  static var onSecondaryContrainer: Color { get }
+  static var dateBackground: Color { get }
+  static var newNoteButtonContainer: Color { get }
+}
+
+enum SummerColors: Colors {
+  static var background: Color { Color(.summerBackground) }
+  static var primaryContrainer: Color { Color(.summerPrimaryContainer) }
+  static var onPrimaryContrainer: Color { Color(.summerOnPrimaryContainer) }
+  static var onSecondaryContrainer: Color { Color(.summerOnSecondaryContainer) }
+  static var dateBackground: Color { Color(.summerDateBackground) }
+  static var newNoteButtonContainer: Color { Color(.summerNewNoteButtonContainer) }
 }

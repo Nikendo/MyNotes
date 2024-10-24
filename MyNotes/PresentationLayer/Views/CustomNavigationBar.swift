@@ -21,6 +21,7 @@ struct CustomNavigationBar: View {
   @FocusState private var focusedField: Field?
   private let buttonSize: CGFloat = 48
   private let buttonRadius: CGFloat = 16
+  private let defaultOpacity: CGFloat = 0.8
   
   init(searchableText: Binding<String>) {
     _searchableText = searchableText
@@ -61,7 +62,7 @@ struct CustomNavigationBar: View {
       label: {
         Image(systemName: "line.3.horizontal")
           .frame(width: buttonSize, height: buttonSize)
-          .background(Color.white.opacity(0.6))
+          .background(appSettings.appTheme.navbarBackgroundColor.opacity(defaultOpacity))
           .clipShape(RoundedRectangle(cornerRadius: buttonRadius))
       }
     )
@@ -88,7 +89,7 @@ struct CustomNavigationBar: View {
           }
       }
     }
-    .background(Color.white.opacity(isSearchMode ? 1 : 0.6))
+    .background(appSettings.appTheme.navbarBackgroundColor.opacity(isSearchMode ? 1 : defaultOpacity))
     .clipShape(RoundedRectangle(cornerRadius: buttonRadius))
   }
   
@@ -115,7 +116,7 @@ struct CustomNavigationBar: View {
       label: {
         Image(systemName: "arrow.up.arrow.down")
           .frame(width: buttonSize, height: buttonSize)
-          .background(Color.white.opacity(0.6))
+          .background(appSettings.appTheme.navbarBackgroundColor.opacity(defaultOpacity))
           .clipShape(RoundedRectangle(cornerRadius: buttonRadius))
       }
     )
