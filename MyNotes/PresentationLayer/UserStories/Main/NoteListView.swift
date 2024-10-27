@@ -26,7 +26,7 @@ struct NoteListView: View {
         }
         .listRowSeparator(.hidden)
         .listRowInsets(EdgeInsets())
-        .listRowBackground(appSettings.appTheme.backgroundColor)
+        .listRowBackground(Color.clear)
       }
       .navigationDestination(for: NoteListViewModel.NavigationCase.self) { navCase in
         switch navCase {

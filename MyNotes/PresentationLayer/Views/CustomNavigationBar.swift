@@ -49,7 +49,13 @@ struct CustomNavigationBar: View {
     Menu(
       content: {
         ForEach(AppSettings.AppTheme.allCases, id: \.name) { theme in
-          Button(action: { appSettings.appTheme = theme }) {
+          Button(
+            action: {
+              withAnimation {
+                appSettings.appTheme = theme
+              }
+            }
+          ) {
             HStack {
               Text(theme.name)
               if appSettings.appTheme == theme {
