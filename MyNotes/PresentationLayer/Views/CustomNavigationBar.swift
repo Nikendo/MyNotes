@@ -79,13 +79,21 @@ struct CustomNavigationBar: View {
           }
         }
       if isSearchMode {
-        TextField("Searchable note...", text: $searchableText)
+        TextField("", text: $searchableText)
           .autocorrectionDisabled()
           .textInputAutocapitalization(.never)
           .focused($focusedField, equals: Field.search)
           .showClearButton($searchableText)
           .onSubmit {
             focusedField = nil
+          }
+          .background {
+            if searchableText.isEmpty {
+              HStack {
+                Text("Searchable note...").opacity(0.4)
+                Spacer()
+              }
+            }
           }
       }
     }
