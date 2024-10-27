@@ -38,7 +38,7 @@ struct NoteListView: View {
       }
       .listStyle(.inset)
       .scrollContentBackground(.hidden)
-      .listRowSpacing(12)
+      .listRowSpacing(16)
       .background(appSettings.appTheme.backgroundColor)
       .ignoresSafeArea(.container)
       .customNavigationBar(searchableText: $viewModel.searchableText)
@@ -77,7 +77,6 @@ struct NoteListView: View {
           .tint(appSettings.appTheme.backgroundColor)
         }
     }
-    .padding(.bottom)
   }
 }
 
