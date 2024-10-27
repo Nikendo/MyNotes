@@ -49,7 +49,7 @@ private extension NoteScreenView {
   // MARK: - Subviews
 
   var backgroundView: some View {
-    appSettings.appTheme.noteBackgroundColor.ignoresSafeArea()
+    appSettings.appTheme.primaryContainerColor.ignoresSafeArea()
   }
 
   var contentView: some View {
@@ -66,7 +66,7 @@ private extension NoteScreenView {
   var headerView: some View {
     HStack {
       Button("Close", systemImage: SystemIcons.close.name, action: viewModel.cancel)
-        .foregroundStyle(appSettings.appTheme.navbarTintColor)
+        .foregroundStyle(appSettings.appTheme.onPrimaryContainerColor)
         .labelStyle(.iconOnly)
         .padding()
       
@@ -76,7 +76,7 @@ private extension NoteScreenView {
         viewModel.noteViewState == .preview ? "Edit" : "Save",
         systemImage: viewModel.noteViewState == .preview ? SystemIcons.edit.name : SystemIcons.accept.name,
         action: viewModel.noteViewState == .preview ? viewModel.switchToEditMode : viewModel.save      )
-      .foregroundStyle(appSettings.appTheme.navbarTintColor.opacity(viewModel.canSave ? 1.0 : 0.6))
+      .foregroundStyle(appSettings.appTheme.onPrimaryContainerColor.opacity(viewModel.canSave ? 1.0 : 0.6))
       .labelStyle(.titleAndIcon)
       .padding()
       .disabled(!viewModel.canSave)
@@ -101,7 +101,7 @@ private extension NoteScreenView {
     )
     .labelsHidden()
     .padding()
-    .tint(appSettings.appTheme.noteTitleColor)
+    .tint(appSettings.appTheme.onPrimaryContainerColor)
     .disabled(viewModel.noteViewState == .preview)
   }
 
@@ -124,7 +124,7 @@ private extension NoteScreenView {
         .padding()
       }
     )
-    .accentColor(appSettings.appTheme.noteTitleColor)
+    .accentColor(appSettings.appTheme.onPrimaryContainerColor)
     .disabled(viewModel.noteViewState == .preview)
   }
 
@@ -141,7 +141,7 @@ private extension NoteScreenView {
     ZStack(alignment: .topLeading) {
       Text(viewModel.title)
         .font(.title)
-        .foregroundStyle(appSettings.appTheme.noteTitleColor)
+        .foregroundStyle(appSettings.appTheme.onPrimaryContainerColor)
         .opacity(0)
         .lineSpacing(8)
         .background {
@@ -157,7 +157,7 @@ private extension NoteScreenView {
         Text("Title")
           .font(.title)
           .fontWeight(.semibold)
-          .foregroundStyle(appSettings.appTheme.noteTitleColor.opacity(0.6))
+          .foregroundStyle(appSettings.appTheme.onPrimaryContainerColor.opacity(0.6))
           .padding(.top, 8)
           .padding(.leading, 4)
       }
@@ -165,7 +165,7 @@ private extension NoteScreenView {
       TextEditor(text: $viewModel.title)
         .font(.title)
         .fontWeight(.semibold)
-        .foregroundStyle(appSettings.appTheme.noteTitleColor)
+        .foregroundStyle(appSettings.appTheme.onPrimaryContainerColor)
         .scrollContentBackground(.hidden)
         .frame(minHeight: viewModel.title.isEmpty ? 48 : titleHeight)
         .disabled(viewModel.noteViewState == .preview)
@@ -176,7 +176,7 @@ private extension NoteScreenView {
     ZStack(alignment: .topLeading) {
       Text(viewModel.message)
         .font(.body)
-        .foregroundStyle(appSettings.appTheme.noteMessageColor)
+        .foregroundStyle(appSettings.appTheme.onSecondaryContainerColor)
         .opacity(0)
         .lineSpacing(8)
         .background {
@@ -190,14 +190,14 @@ private extension NoteScreenView {
       if viewModel.message.isEmpty && viewModel.noteViewState != .preview {
         Text("Write here...")
           .font(.body)
-          .foregroundStyle(appSettings.appTheme.noteMessageColor.opacity(0.6))
+          .foregroundStyle(appSettings.appTheme.onSecondaryContainerColor.opacity(0.6))
           .padding(.top, 8)
           .padding(.leading, 4)
       }
       
       TextEditor(text: $viewModel.message)
         .font(.body)
-        .foregroundStyle(appSettings.appTheme.noteMessageColor)
+        .foregroundStyle(appSettings.appTheme.onSecondaryContainerColor)
         .scrollContentBackground(.hidden)
         .frame(minHeight: viewModel.message.isEmpty ? 32 : messageHeight)
         .disabled(viewModel.noteViewState == .preview)

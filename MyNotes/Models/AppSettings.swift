@@ -95,7 +95,7 @@ final class AppSettings: ObservableObject {
       case .winter: Image(.landscapeWinter)
       }
     }
-
+    
     var backgroundColor: Color {
       switch self {
       case .spring: SpringColors.background
@@ -104,8 +104,8 @@ final class AppSettings: ObservableObject {
       case .winter: WinterColors.background
       }
     }
-
-    var noteBackgroundColor: Color {
+    
+    var primaryContainerColor: Color {
       switch self {
       case .spring: SpringColors.primaryContrainer
       case .summer: SummerColors.primaryContrainer
@@ -113,8 +113,8 @@ final class AppSettings: ObservableObject {
       case .winter: WinterColors.primaryContrainer
       }
     }
-
-    var noteTitleColor: Color {
+    
+    var onPrimaryContainerColor: Color {
       switch self {
       case .spring: SpringColors.onPrimaryContrainer
       case .summer: SummerColors.onPrimaryContrainer
@@ -123,21 +123,12 @@ final class AppSettings: ObservableObject {
       }
     }
 
-    var noteMessageColor: Color {
+    var onSecondaryContainerColor: Color {
       switch self {
       case .spring: SpringColors.onSecondaryContrainer
       case .summer: SummerColors.onSecondaryContrainer
       case .autumn: AutumnColors.onSecondaryContrainer
       case .winter: WinterColors.onSecondaryContrainer
-      }
-    }
-
-    var noteDateColor: Color {
-      switch self {
-      case .spring: SpringColors.onPrimaryContrainer
-      case .summer: SummerColors.onPrimaryContrainer
-      case .autumn: AutumnColors.onPrimaryContrainer
-      case .winter: WinterColors.onPrimaryContrainer
       }
     }
 
@@ -156,33 +147,6 @@ final class AppSettings: ObservableObject {
       case .summer: SummerColors.newNoteButtonContainer
       case .autumn: AutumnColors.newNoteButtonContainer
       case .winter: WinterColors.newNoteButtonContainer
-      }
-    }
-
-    var newNoteButtonTintColor: Color {
-      switch self {
-      case .spring: SpringColors.background
-      case .summer: SummerColors.background
-      case .autumn: AutumnColors.background
-      case .winter: WinterColors.background
-      }
-    }
-
-    var navbarTintColor: Color {
-      switch self {
-      case .spring: SpringColors.onPrimaryContrainer
-      case .summer: SummerColors.onPrimaryContrainer
-      case .autumn: AutumnColors.onPrimaryContrainer
-      case .winter: WinterColors.onPrimaryContrainer
-      }
-    }
-    
-    var navbarBackgroundColor: Color {
-      switch self {
-      case .spring: SpringColors.primaryContrainer
-      case .summer: SummerColors.primaryContrainer
-      case .autumn: AutumnColors.primaryContrainer
-      case .winter: WinterColors.primaryContrainer
       }
     }
   }

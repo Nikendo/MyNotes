@@ -36,7 +36,7 @@ struct CustomNavigationBar: View {
       trailingGroupViews
     }
     .padding(.horizontal, 8)
-    .foregroundStyle(appSettings.appTheme.navbarTintColor)
+    .foregroundStyle(appSettings.appTheme.onPrimaryContainerColor)
     .onChange(of: reversedOrder) { _, newValue in
       UserDefaults.standard.set(newValue, forKey: "notes_order")
     }
@@ -62,7 +62,7 @@ struct CustomNavigationBar: View {
       label: {
         Image(systemName: "line.3.horizontal")
           .frame(width: buttonSize, height: buttonSize)
-          .background(appSettings.appTheme.navbarBackgroundColor.opacity(defaultOpacity))
+          .background(appSettings.appTheme.primaryContainerColor.opacity(defaultOpacity))
           .clipShape(RoundedRectangle(cornerRadius: buttonRadius))
       }
     )
@@ -97,7 +97,7 @@ struct CustomNavigationBar: View {
           }
       }
     }
-    .background(appSettings.appTheme.navbarBackgroundColor.opacity(isSearchMode ? 1 : defaultOpacity))
+    .background(appSettings.appTheme.primaryContainerColor.opacity(isSearchMode ? 1 : defaultOpacity))
     .clipShape(RoundedRectangle(cornerRadius: buttonRadius))
   }
   
@@ -124,7 +124,7 @@ struct CustomNavigationBar: View {
       label: {
         Image(systemName: "arrow.up.arrow.down")
           .frame(width: buttonSize, height: buttonSize)
-          .background(appSettings.appTheme.navbarBackgroundColor.opacity(defaultOpacity))
+          .background(appSettings.appTheme.primaryContainerColor.opacity(defaultOpacity))
           .clipShape(RoundedRectangle(cornerRadius: buttonRadius))
       }
     )

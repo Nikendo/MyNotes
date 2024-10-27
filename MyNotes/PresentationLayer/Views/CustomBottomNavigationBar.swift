@@ -24,7 +24,7 @@ struct CustomBottomNavigationBar: View {
         .frame(width: 24, height: 24)
         .padding()
         .background(appSettings.appTheme.newNoteButtonBackgroundColor)
-        .foregroundStyle(appSettings.appTheme.newNoteButtonTintColor)
+        .foregroundStyle(appSettings.appTheme.backgroundColor)
         .cornerRadius(28)
     }
   }
