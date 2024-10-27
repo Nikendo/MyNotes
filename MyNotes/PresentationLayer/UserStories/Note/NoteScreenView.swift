@@ -11,6 +11,7 @@ struct NoteScreenView: View {
 
   // MARK: - Environments
 
+  @EnvironmentObject private var appSettings: AppSettings
   @Environment(\.dismiss) var dismiss
 
   // MARK: - Private Properties
@@ -48,7 +49,7 @@ private extension NoteScreenView {
   // MARK: - Subviews
 
   var backgroundView: some View {
-    Color(.D_9_E_8_FD).ignoresSafeArea()
+    appSettings.appTheme.noteBackgroundColor.ignoresSafeArea()
   }
 
   var contentView: some View {
@@ -65,7 +66,7 @@ private extension NoteScreenView {
   var headerView: some View {
     HStack {
       Button("Close", systemImage: SystemIcons.close.name, action: viewModel.cancel)
-        .foregroundStyle(Color(._64696_F))
+        .foregroundStyle(appSettings.appTheme.navbarTintColor)
         .labelStyle(.iconOnly)
         .padding()
       
@@ -75,33 +76,11 @@ private extension NoteScreenView {
         viewModel.noteViewState == .preview ? "Edit" : "Save",
         systemImage: viewModel.noteViewState == .preview ? SystemIcons.edit.name : SystemIcons.accept.name,
         action: viewModel.noteViewState == .preview ? viewModel.switchToEditMode : viewModel.save      )
-      .foregroundStyle(Color(._64696_F).opacity(viewModel.canSave ? 1.0 : 0.6))
+      .foregroundStyle(appSettings.appTheme.navbarTintColor.opacity(viewModel.canSave ? 1.0 : 0.6))
       .labelStyle(.titleAndIcon)
       .padding()
       .disabled(!viewModel.canSave)
     }
-  }
-
-  var closeView: some View {
-    Button("Close", systemImage: SystemIcons.close.name, action: viewModel.cancel)
-      .foregroundStyle(Color(._64696_F))
-      .labelStyle(.iconOnly)
-      .padding()
-  }
-
-  var searchView: some View {
-    Image(systemName: SystemIcons.search.name)
-      .foregroundStyle(Color(._64696_F))
-      .padding()
-  }
-
-  var saveView: some View {
-    Button(action: viewModel.save) {
-      Text("Save")
-    }
-    .foregroundStyle(Color(._64696_F).opacity(viewModel.canSave ? 1.0 : 0.6))
-    .padding()
-    .disabled(!viewModel.canSave)
   }
 
   var subheaderView: some View {
@@ -122,6 +101,7 @@ private extension NoteScreenView {
     )
     .labelsHidden()
     .padding()
+    .tint(appSettings.appTheme.noteTitleColor)
     .disabled(viewModel.noteViewState == .preview)
   }
 
@@ -144,7 +124,7 @@ private extension NoteScreenView {
         .padding()
       }
     )
-    .accentColor(Color(._64696_F))
+    .accentColor(appSettings.appTheme.noteTitleColor)
     .disabled(viewModel.noteViewState == .preview)
   }
 
@@ -161,7 +141,7 @@ private extension NoteScreenView {
     ZStack(alignment: .topLeading) {
       Text(viewModel.title)
         .font(.title)
-        .foregroundStyle(Color(._101010))
+        .foregroundStyle(appSettings.appTheme.noteTitleColor)
         .opacity(0)
         .lineSpacing(8)
         .background {
@@ -177,7 +157,7 @@ private extension NoteScreenView {
         Text("Title")
           .font(.title)
           .fontWeight(.semibold)
-          .foregroundStyle(Color(.A_7_B_1_C_0))
+          .foregroundStyle(appSettings.appTheme.noteTitleColor.opacity(0.6))
           .padding(.top, 8)
           .padding(.leading, 4)
       }
@@ -185,7 +165,7 @@ private extension NoteScreenView {
       TextEditor(text: $viewModel.title)
         .font(.title)
         .fontWeight(.semibold)
-        .foregroundStyle(Color(._101010))
+        .foregroundStyle(appSettings.appTheme.noteTitleColor)
         .scrollContentBackground(.hidden)
         .frame(minHeight: viewModel.title.isEmpty ? 48 : titleHeight)
         .disabled(viewModel.noteViewState == .preview)
@@ -196,7 +176,7 @@ private extension NoteScreenView {
     ZStack(alignment: .topLeading) {
       Text(viewModel.message)
         .font(.body)
-        .foregroundStyle(Color(._101010))
+        .foregroundStyle(appSettings.appTheme.noteMessageColor)
         .opacity(0)
         .lineSpacing(8)
         .background {
@@ -210,14 +190,14 @@ private extension NoteScreenView {
       if viewModel.message.isEmpty && viewModel.noteViewState != .preview {
         Text("Write here...")
           .font(.body)
-          .foregroundStyle(Color(.A_7_B_1_C_0))
+          .foregroundStyle(appSettings.appTheme.noteMessageColor.opacity(0.6))
           .padding(.top, 8)
           .padding(.leading, 4)
       }
       
       TextEditor(text: $viewModel.message)
         .font(.body)
-        .foregroundStyle(Color(._101010))
+        .foregroundStyle(appSettings.appTheme.noteMessageColor)
         .scrollContentBackground(.hidden)
         .frame(minHeight: viewModel.message.isEmpty ? 32 : messageHeight)
         .disabled(viewModel.noteViewState == .preview)
@@ -233,6 +213,7 @@ import SwiftData
   let saveNoteUseCase: SaveNoteUseCase = SaveNoteUseCaseImpl(repository: repository)
 
   NoteScreenBuilder(saveNoteUseCase: saveNoteUseCase).build()
+    .environmentObject(AppSettings())
 }
 
 #Preview {
@@ -241,4 +222,5 @@ import SwiftData
   let saveNoteUseCase: SaveNoteUseCase = SaveNoteUseCaseImpl(repository: NoteRepositoryImpl(modelContext: ModelContext(previewContainer)))
   
   NoteScreenBuilder(saveNoteUseCase: saveNoteUseCase, note: NoteEntityMock.mock, isPreview: true).build()
+    .environmentObject(AppSettings())
 }
