@@ -101,7 +101,7 @@ final class AppSettings: ObservableObject {
       case .spring: SpringColors.background
       case .summer: SummerColors.background
       case .autumn: AutumnColors.background
-      case .winter: Color(.BDD_7_EE)
+      case .winter: WinterColors.background
       }
     }
 
@@ -110,7 +110,7 @@ final class AppSettings: ObservableObject {
       case .spring: SpringColors.primaryContrainer
       case .summer: SummerColors.primaryContrainer
       case .autumn: AutumnColors.primaryContrainer
-      case .winter: Color(.ECEBFF)
+      case .winter: WinterColors.primaryContrainer
       }
     }
 
@@ -119,7 +119,7 @@ final class AppSettings: ObservableObject {
       case .spring: SpringColors.onPrimaryContrainer
       case .summer: SummerColors.onPrimaryContrainer
       case .autumn: AutumnColors.onPrimaryContrainer
-      case .winter: Color(._101010)
+      case .winter: WinterColors.onPrimaryContrainer
       }
     }
 
@@ -128,7 +128,7 @@ final class AppSettings: ObservableObject {
       case .spring: SpringColors.onSecondaryContrainer
       case .summer: SummerColors.onSecondaryContrainer
       case .autumn: AutumnColors.onSecondaryContrainer
-      case .winter: Color(._333333)
+      case .winter: WinterColors.onSecondaryContrainer
       }
     }
 
@@ -137,7 +137,7 @@ final class AppSettings: ObservableObject {
       case .spring: SpringColors.onPrimaryContrainer
       case .summer: SummerColors.onPrimaryContrainer
       case .autumn: AutumnColors.onPrimaryContrainer
-      case .winter: Color(._333333)
+      case .winter: WinterColors.onPrimaryContrainer
       }
     }
 
@@ -146,7 +146,7 @@ final class AppSettings: ObservableObject {
       case .spring: SpringColors.dateBackground
       case .summer: SummerColors.dateBackground
       case .autumn: AutumnColors.dateBackground
-      case .winter: Color(._98_BCEB)
+      case .winter: WinterColors.dateBackground
       }
     }
 
@@ -155,7 +155,7 @@ final class AppSettings: ObservableObject {
       case .spring: SpringColors.newNoteButtonContainer
       case .summer: SummerColors.newNoteButtonContainer
       case .autumn: AutumnColors.newNoteButtonContainer
-      case .winter: .blue
+      case .winter: WinterColors.newNoteButtonContainer
       }
     }
 
@@ -164,7 +164,7 @@ final class AppSettings: ObservableObject {
       case .spring: SpringColors.background
       case .summer: SummerColors.background
       case .autumn: AutumnColors.background
-      case .winter: .white
+      case .winter: WinterColors.background
       }
     }
 
@@ -173,7 +173,7 @@ final class AppSettings: ObservableObject {
       case .spring: SpringColors.onPrimaryContrainer
       case .summer: SummerColors.onPrimaryContrainer
       case .autumn: AutumnColors.onPrimaryContrainer
-      case .winter: .primary
+      case .winter: WinterColors.onPrimaryContrainer
       }
     }
     
@@ -182,7 +182,7 @@ final class AppSettings: ObservableObject {
       case .spring: SpringColors.primaryContrainer
       case .summer: SummerColors.primaryContrainer
       case .autumn: AutumnColors.primaryContrainer
-      case .winter: .white
+      case .winter: WinterColors.primaryContrainer
       }
     }
   }
@@ -222,4 +222,13 @@ enum AutumnColors: Colors {
   static var onSecondaryContrainer: Color { Color(.autumnOnSecondaryContainer) }
   static var dateBackground: Color { Color(.autumnDateBackground) }
   static var newNoteButtonContainer: Color { Color(.autumnNewNoteButtonContainer) }
+}
+
+enum WinterColors: Colors {
+  static var background: Color { Color(.winterBackground) }
+  static var primaryContrainer: Color { Color(.winterPrimaryContainer) }
+  static var onPrimaryContrainer: Color { Color(.winterOnPrimaryContainer) }
+  static var onSecondaryContrainer: Color { Color(.winterOnSecondaryContainer) }
+  static var dateBackground: Color { Color(.winterDateBackground) }
+  static var newNoteButtonContainer: Color { Color(.winterNewNoteButtonContainer) }
 }
