@@ -24,6 +24,7 @@ struct MyNotesApp: App {
     WindowGroup {
       ContentView(repository: repository)
         .preferredColorScheme(.light)
+        .tint(appSettings.appTheme.onSecondaryContainerColor)
     }
     .environmentObject(appSettings)
   }

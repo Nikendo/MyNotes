@@ -95,86 +95,104 @@ final class AppSettings: ObservableObject {
       case .winter: Image(.landscapeWinter)
       }
     }
-
+    
     var backgroundColor: Color {
       switch self {
-      case .spring: Color(._7_D_9115)
-      case .summer: Color(._07423_C)
-      case .autumn: Color(._4_F_2423)
-      case .winter: Color(.BDD_7_EE)
+      case .spring: SpringColors.background
+      case .summer: SummerColors.background
+      case .autumn: AutumnColors.background
+      case .winter: WinterColors.background
+      }
+    }
+    
+    var primaryContainerColor: Color {
+      switch self {
+      case .spring: SpringColors.primaryContrainer
+      case .summer: SummerColors.primaryContrainer
+      case .autumn: AutumnColors.primaryContrainer
+      case .winter: WinterColors.primaryContrainer
+      }
+    }
+    
+    var onPrimaryContainerColor: Color {
+      switch self {
+      case .spring: SpringColors.onPrimaryContrainer
+      case .summer: SummerColors.onPrimaryContrainer
+      case .autumn: AutumnColors.onPrimaryContrainer
+      case .winter: WinterColors.onPrimaryContrainer
       }
     }
 
-    var noteBackgroundColor: Color {
+    var onSecondaryContainerColor: Color {
       switch self {
-      case .spring: Color(.D_9_E_8_FD)
-      case .summer: Color(.D_9_E_8_FD)
-      case .autumn: Color(._73350_F)
-      case .winter: Color(.ECEBFF)
-      }
-    }
-
-    var noteTitleColor: Color {
-      switch self {
-      case .spring: Color(._101010)
-      case .summer: Color(._101010)
-      case .autumn: Color(.FFF_379)
-      case .winter: Color(._101010)
-      }
-    }
-
-    var noteMessageColor: Color {
-      switch self {
-      case .spring: Color(._333333)
-      case .summer: Color(._333333)
-      case .autumn: Color(.FDFFC_4)
-      case .winter: Color(._333333)
-      }
-    }
-
-    var noteDateColor: Color {
-      switch self {
-      case .spring: Color(._333333)
-      case .summer: Color(._333333)
-      case .autumn: Color(.FEA_017)
-      case .winter: Color(._333333)
+      case .spring: SpringColors.onSecondaryContrainer
+      case .summer: SummerColors.onSecondaryContrainer
+      case .autumn: AutumnColors.onSecondaryContrainer
+      case .winter: WinterColors.onSecondaryContrainer
       }
     }
 
     var noteDateRectangleColor: Color {
       switch self {
-      case .spring: Color(._98_BCEB)
-      case .summer: Color(._98_BCEB)
-      case .autumn: Color(.D_8001_B)
-      case .winter: Color(._98_BCEB)
+      case .spring: SpringColors.dateBackground
+      case .summer: SummerColors.dateBackground
+      case .autumn: AutumnColors.dateBackground
+      case .winter: WinterColors.dateBackground
       }
     }
 
     var newNoteButtonBackgroundColor: Color {
       switch self {
-      case .spring: .blue
-      case .summer: .blue
-      case .autumn: Color(.FFF_379)
-      case .winter: .blue
-      }
-    }
-
-    var newNoteButtonTintColor: Color {
-      switch self {
-      case .spring: .white
-      case .summer: .white
-      case .autumn: Color(._333333)
-      case .winter: .white
-      }
-    }
-
-    var navbarTintColor: Color {
-      switch self {
-      case .spring: .primary
-      case .summer: .primary
-      case .autumn: .primary
-      case .winter: .primary
+      case .spring: SpringColors.newNoteButtonContainer
+      case .summer: SummerColors.newNoteButtonContainer
+      case .autumn: AutumnColors.newNoteButtonContainer
+      case .winter: WinterColors.newNoteButtonContainer
       }
     }
   }
+}
+
+protocol Colors {
+  static var background: Color { get }
+  static var primaryContrainer: Color { get }
+  static var onPrimaryContrainer: Color { get }
+  static var onSecondaryContrainer: Color { get }
+  static var dateBackground: Color { get }
+  static var newNoteButtonContainer: Color { get }
+}
+
+enum SpringColors: Colors {
+  static var background: Color { Color(.springBackground) }
+  static var primaryContrainer: Color { Color(.springPrimaryContainer) }
+  static var onPrimaryContrainer: Color { Color(.springOnPrimaryContainer) }
+  static var onSecondaryContrainer: Color { Color(.springOnSecondaryContainer) }
+  static var dateBackground: Color { Color(.springDateBackground) }
+  static var newNoteButtonContainer: Color { Color(.springNewNoteButtonContainer) }
+}
+
+enum SummerColors: Colors {
+  static var background: Color { Color(.summerBackground) }
+  static var primaryContrainer: Color { Color(.summerPrimaryContainer) }
+  static var onPrimaryContrainer: Color { Color(.summerOnPrimaryContainer) }
+  static var onSecondaryContrainer: Color { Color(.summerOnSecondaryContainer) }
+  static var dateBackground: Color { Color(.summerDateBackground) }
+  static var newNoteButtonContainer: Color { Color(.summerNewNoteButtonContainer) }
+}
+
+enum AutumnColors: Colors {
+  static var background: Color { Color(.autumnBackground) }
+  static var primaryContrainer: Color { Color(.autumnPrimaryContainer) }
+  static var onPrimaryContrainer: Color { Color(.autumnOnPrimaryContainer) }
+  static var onSecondaryContrainer: Color { Color(.autumnOnSecondaryContainer) }
+  static var dateBackground: Color { Color(.autumnDateBackground) }
+  static var newNoteButtonContainer: Color { Color(.autumnNewNoteButtonContainer) }
+}
+
+enum WinterColors: Colors {
+  static var background: Color { Color(.winterBackground) }
+  static var primaryContrainer: Color { Color(.winterPrimaryContainer) }
+  static var onPrimaryContrainer: Color { Color(.winterOnPrimaryContainer) }
+  static var onSecondaryContrainer: Color { Color(.winterOnSecondaryContainer) }
+  static var dateBackground: Color { Color(.winterDateBackground) }
+  static var newNoteButtonContainer: Color { Color(.winterNewNoteButtonContainer) }
 }

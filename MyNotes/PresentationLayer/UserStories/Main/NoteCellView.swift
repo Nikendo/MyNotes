@@ -14,7 +14,7 @@ struct NoteCellView: View {
   var body: some View {
     contentView
       .padding()
-      .background(appSettings.appTheme.noteBackgroundColor)
+      .background(appSettings.appTheme.primaryContainerColor)
       .cornerRadius(12)
       .frame(maxHeight: 278)
   }
@@ -55,7 +55,7 @@ struct NoteCellView: View {
         .foregroundColor(appSettings.appTheme.noteDateRectangleColor)
         .padding(.bottom, 4)
       (date + month)
-        .foregroundColor(appSettings.appTheme.noteDateColor)
+        .foregroundColor(appSettings.appTheme.onPrimaryContainerColor)
     }
   }
 
@@ -78,14 +78,14 @@ struct NoteCellView: View {
   @ViewBuilder private var titleView: some View {
     Text(!note.title.isEmpty ? note.title : note.message)
       .font(.title)
-      .foregroundColor(appSettings.appTheme.noteTitleColor)
+      .foregroundColor(appSettings.appTheme.onPrimaryContainerColor)
   }
 
   @ViewBuilder private var messageView: some View {
     if !note.title.isEmpty {
       Text(note.message)
         .font(.subheadline)
-        .foregroundColor(appSettings.appTheme.noteMessageColor)
+        .foregroundColor(appSettings.appTheme.onSecondaryContainerColor)
     } else {
       EmptyView()
     }
