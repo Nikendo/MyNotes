@@ -17,8 +17,6 @@ struct NoteScreenView: View {
   // MARK: - Private Properties
 
   @StateObject private var viewModel: NoteScreenViewModel
-  @State private var titleHeight: CGFloat = 0
-  @State private var messageHeight: CGFloat = 0
     
   // MARK: - Init
 
@@ -138,70 +136,26 @@ private extension NoteScreenView {
   }
 
   var titleView: some View {
-    ZStack(alignment: .topLeading) {
-      Text(viewModel.title)
-        .font(.title)
-        .foregroundStyle(appSettings.appTheme.onPrimaryContainerColor)
-        .opacity(0)
-        .lineSpacing(8)
-        .background {
-          GeometryReader { geometry in
-            Color.clear.onAppear {
-              print("Title height: \(geometry.size.height)")
-              self.titleHeight = geometry.size.height + 8
-            }
-          }
-        }
-      
-      if viewModel.title.isEmpty && viewModel.noteViewState != .preview {
-        Text("Title")
-          .font(.title)
-          .fontWeight(.semibold)
-          .foregroundStyle(appSettings.appTheme.onPrimaryContainerColor.opacity(0.6))
-          .padding(.top, 8)
-          .padding(.leading, 4)
-      }
-      
-      TextEditor(text: $viewModel.title)
-        .font(.title)
-        .fontWeight(.semibold)
-        .foregroundStyle(appSettings.appTheme.onPrimaryContainerColor)
-        .scrollContentBackground(.hidden)
-        .frame(minHeight: viewModel.title.isEmpty ? 48 : titleHeight)
-        .disabled(viewModel.noteViewState == .preview)
-    }
+    TextField("Title", text: $viewModel.title, axis: .vertical)
+      .font(.title)
+      .fontWeight(.semibold)
+      .foregroundStyle(appSettings.appTheme.onPrimaryContainerColor)
+      .scrollContentBackground(.hidden)
+      .lineLimit(1...5)
+      .disabled(viewModel.noteViewState == .preview)
+      .padding(.top, 8)
+      .padding(.leading, 4)
   }
 
   var messageView: some View {
-    ZStack(alignment: .topLeading) {
-      Text(viewModel.message)
-        .font(.body)
-        .foregroundStyle(appSettings.appTheme.onSecondaryContainerColor)
-        .opacity(0)
-        .lineSpacing(8)
-        .background {
-          GeometryReader { geometry in
-            Color.clear.onAppear {
-              self.messageHeight = geometry.size.height + 8
-            }
-          }
-        }
-      
-      if viewModel.message.isEmpty && viewModel.noteViewState != .preview {
-        Text("Write here...")
-          .font(.body)
-          .foregroundStyle(appSettings.appTheme.onSecondaryContainerColor.opacity(0.6))
-          .padding(.top, 8)
-          .padding(.leading, 4)
-      }
-      
-      TextEditor(text: $viewModel.message)
-        .font(.body)
-        .foregroundStyle(appSettings.appTheme.onSecondaryContainerColor)
-        .scrollContentBackground(.hidden)
-        .frame(minHeight: viewModel.message.isEmpty ? 32 : messageHeight)
-        .disabled(viewModel.noteViewState == .preview)
-    }
+    TextField("Write here...", text: $viewModel.message, axis: .vertical)
+      .font(.body)
+      .fontWeight(.semibold)
+      .foregroundStyle(appSettings.appTheme.onSecondaryContainerColor)
+      .scrollContentBackground(.hidden)
+      .disabled(viewModel.noteViewState == .preview)
+      .padding(.top, 8)
+      .padding(.leading, 4)
   }
 }
 
