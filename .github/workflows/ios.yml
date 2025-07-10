@@ -44,6 +44,8 @@ jobs:
           -scheme MyNotes
           -destination 'platform=iOS Simulator,name=iPhone 16 Pro' \
           -enableCodeCoverage YES \
-          -derivedDataPath ./DerivedData
+          -derivedDataPath ./DerivedData \
+          CODE_SIGNING_REQUIRED=NO \
+          CODE_SIGN_IDENTITY=""
       
   
