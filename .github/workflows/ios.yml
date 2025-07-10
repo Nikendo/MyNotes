@@ -1,0 +1,50 @@
+name: iOS CI/CD
+
+on:
+  push:
+    branches:
+    - main
+    - develop
+  pull_request:
+    branches:
+    - main
+    - develop
+
+jobs:
+  build:
+    name: Build default scheme using any available iPhone simulator
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Build
+        env:
+          scheme: ${{ 'default' }}
+          platform: ${{ 'iOS Simulator' }}
+        run: |
+          xcodebuild clean build \
+            -project MyNotes.xcodeproj \
+            -scheme MyNotes \
+            -configuration Debug \
+            -sdk iphoneos \
+            -derivedDataPath ./DerivedData
+
+  tests:
+    name: Test default scheme using any available iPhone simulator
+    needs: build
+    runs-on: macos-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    - name: Run Tests
+      run: |
+        xcodebuild test \
+          -project MyNotes.xcodeproj \
+          -scheme MyNotes
+          -destination 'platform=iOS Simulator,name=iPhone 16 Pro' \
+          -enableCodeCoverage YES \
+          -derivedDataPath ./DerivedData
+      
+  
