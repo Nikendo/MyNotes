@@ -42,7 +42,7 @@ jobs:
         xcodebuild test \
           -project MyNotes.xcodeproj \
           -scheme MyNotes
-          -destination 'platform=iOS Simulator,name=iPhone 16 Pro' \
+          -destination 'platform=iOS Simulator,id:752044EA-F1FA-44C0-AC6E-714380C014A7,name=iPhone 16 Pro' \
           -enableCodeCoverage YES \
           -derivedDataPath ./DerivedData \
           CODE_SIGNING_REQUIRED=NO \
