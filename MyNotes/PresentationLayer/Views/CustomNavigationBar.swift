@@ -153,6 +153,7 @@ struct CustomNavigationBar: View {
 }
 
 #Preview {
-  CustomNavigationBar(searchableText: .constant(""))
+  let view = CustomNavigationBar(searchableText: .constant(""))
     .environmentObject(AppSettings())
+  return view
 }

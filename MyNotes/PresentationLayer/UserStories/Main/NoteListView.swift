@@ -85,7 +85,7 @@ import SwiftData
 #Preview {
   let repository: NoteRepository = NoteRepositoryImpl(modelContext: ModelContext(previewContainer))
   let navPath: NavigationPath = NavigationPath()
-  NavigationStack {
+  let view = NavigationStack {
     NoteListView(
       viewModel: NoteListViewModel(
         model: NoteListModel(
@@ -98,4 +98,6 @@ import SwiftData
     )
   }
   .environmentObject(AppSettings())
+
+  return view
 }

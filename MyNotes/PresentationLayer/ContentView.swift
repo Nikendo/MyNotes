@@ -23,6 +23,7 @@ struct ContentView: View {
 }
 
 #Preview {
-  ContentView(repository: NoteRepositoryImpl(modelContext: ModelContext(previewContainer)))
+  let view = ContentView(repository: NoteRepositoryImpl(modelContext: ModelContext(previewContainer)))
     .environmentObject(AppSettings())
+  return view
 }
