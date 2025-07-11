@@ -163,15 +163,6 @@ import SwiftData
 
 #Preview {
   let modelContext = ModelContext(previewContainer)
-  let repository: NoteRepository = NoteRepositoryImpl(modelContext: modelContext)
-  let saveNoteUseCase: SaveNoteUseCase = SaveNoteUseCaseImpl(repository: repository)
-
-  NoteScreenBuilder(saveNoteUseCase: saveNoteUseCase).build()
-    .environmentObject(AppSettings())
-}
-
-#Preview {
-  let modelContext = ModelContext(previewContainer)
   let repository: NoteRepository = NoteRepositoryImpl(modelContext: ModelContext(previewContainer))
   let saveNoteUseCase: SaveNoteUseCase = SaveNoteUseCaseImpl(repository: NoteRepositoryImpl(modelContext: ModelContext(previewContainer)))
   
