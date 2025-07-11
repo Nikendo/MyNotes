@@ -6,12 +6,26 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct MyNotesApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
+  @StateObject var appSettings = AppSettings()
+  private let repository: NoteRepository = {
+    do {
+      let modelContainer = try ModelContainer(for: NoteData.self)
+      return NoteRepositoryImpl(modelContext: ModelContext(modelContainer))
+    } catch {
+      fatalError(error.localizedDescription)
     }
+  }()
+  
+  var body: some Scene {
+    WindowGroup {
+      ContentView(repository: repository)
+        .preferredColorScheme(.light)
+        .tint(appSettings.appTheme.onSecondaryContainerColor)
+    }
+    .environmentObject(appSettings)
+  }
 }
