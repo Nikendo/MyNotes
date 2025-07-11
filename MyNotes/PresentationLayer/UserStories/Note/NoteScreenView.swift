@@ -165,7 +165,14 @@ import SwiftData
   let modelContext = ModelContext(previewContainer)
   let repository: NoteRepository = NoteRepositoryImpl(modelContext: ModelContext(previewContainer))
   let saveNoteUseCase: SaveNoteUseCase = SaveNoteUseCaseImpl(repository: NoteRepositoryImpl(modelContext: ModelContext(previewContainer)))
-  
-  NoteScreenBuilder(saveNoteUseCase: saveNoteUseCase, note: NoteEntityMock.mock, isPreview: true).build()
+
+  let view = NoteScreenBuilder(
+    saveNoteUseCase: saveNoteUseCase,
+    note: NoteEntityMock.mock,
+    isPreview: true
+  )
+    .build()
     .environmentObject(AppSettings())
+
+  return view
 }
