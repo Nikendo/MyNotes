@@ -26,6 +26,7 @@
 		736022952CBC6DE1002E645C /* NoteListScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736022942CBC6DE1002E645C /* NoteListScreenBuilder.swift */; };
 		736022972CBC6FE6002E645C /* NoteScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736022962CBC6FE6002E645C /* NoteScreenBuilder.swift */; };
 		7360229A2CBC7BBE002E645C /* NoteEntityMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736022992CBC7BBE002E645C /* NoteEntityMock.swift */; };
+		737365362E2A880900332472 /* MapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737365352E2A880900332472 /* MapperTests.swift */; };
 		7378A6672CB8907E0074A5C4 /* NoteMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7378A6662CB8907E0074A5C4 /* NoteMapper.swift */; };
 		73924C592CB88E290034D62E /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73924C582CB88E290034D62E /* Note.swift */; };
 		73924C5B2CB88E3E0034D62E /* Mood.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73924C5A2CB88E3E0034D62E /* Mood.swift */; };
@@ -82,6 +83,7 @@
 		736022942CBC6DE1002E645C /* NoteListScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListScreenBuilder.swift; sourceTree = "<group>"; };
 		736022962CBC6FE6002E645C /* NoteScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteScreenBuilder.swift; sourceTree = "<group>"; };
 		736022992CBC7BBE002E645C /* NoteEntityMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEntityMock.swift; sourceTree = "<group>"; };
+		737365352E2A880900332472 /* MapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapperTests.swift; sourceTree = "<group>"; };
 		7378A6662CB8907E0074A5C4 /* NoteMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteMapper.swift; sourceTree = "<group>"; };
 		73924C582CB88E290034D62E /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		73924C5A2CB88E3E0034D62E /* Mood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mood.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 		733DE6182957BF6B00508D9C /* MyNotesTests */ = {
 			isa = PBXGroup;
 			children = (
+				737365342E2A87B800332472 /* MapperTests */,
 				733DE6192957BF6B00508D9C /* MyNotesTests.swift */,
 			);
 			path = MyNotesTests;
@@ -202,6 +205,14 @@
 				736022992CBC7BBE002E645C /* NoteEntityMock.swift */,
 			);
 			path = Mock;
+			sourceTree = "<group>";
+		};
+		737365342E2A87B800332472 /* MapperTests */ = {
+			isa = PBXGroup;
+			children = (
+				737365352E2A880900332472 /* MapperTests.swift */,
+			);
+			path = MapperTests;
 			sourceTree = "<group>";
 		};
 		7378A6642CB8905F0074A5C4 /* Mapper */ = {
@@ -487,6 +498,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				737365362E2A880900332472 /* MapperTests.swift in Sources */,
 				733DE61A2957BF6B00508D9C /* MyNotesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
