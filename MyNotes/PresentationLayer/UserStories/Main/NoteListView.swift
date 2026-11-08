@@ -46,6 +46,7 @@ struct NoteListView: View {
         viewModel.navigateToNewNote()
       }
     }
+    .hideKeyboardOnTap()
     .onAppear(perform: viewModel.bindInput)
     .onChange(of: viewModel.navigationPath) {
       viewModel.refreshData()

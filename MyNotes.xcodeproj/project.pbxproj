@@ -20,6 +20,7 @@
 		733DE63A2957CC6900508D9C /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 733DE6392957CC6900508D9C /* Colors.xcassets */; };
 		735575712CB5C5C70059EA24 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 735575702CB5C5C70059EA24 /* Localizable.xcstrings */; };
 		735E99872CB83B4B00436DCB /* TextFieldClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 735E99862CB83B4B00436DCB /* TextFieldClearButton.swift */; };
+		73A11A022E2B100100436DCB /* HideKeyboardOnTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A11A012E2B100100436DCB /* HideKeyboardOnTap.swift */; };
 		7360228F2CBC5896002E645C /* CustomNavigationBarViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7360228E2CBC5896002E645C /* CustomNavigationBarViewModifier.swift */; };
 		736022912CBC5AD9002E645C /* CustomBottomNavigationBarViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736022902CBC5AD9002E645C /* CustomBottomNavigationBarViewModifier.swift */; };
 		736022932CBC5D5C002E645C /* CustomBottomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 736022922CBC5D5C002E645C /* CustomBottomNavigationBar.swift */; };
@@ -77,6 +78,7 @@
 		733DE6392957CC6900508D9C /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		735575702CB5C5C70059EA24 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		735E99862CB83B4B00436DCB /* TextFieldClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldClearButton.swift; sourceTree = "<group>"; };
+		73A11A012E2B100100436DCB /* HideKeyboardOnTap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboardOnTap.swift; sourceTree = "<group>"; };
 		7360228E2CBC5896002E645C /* CustomNavigationBarViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBarViewModifier.swift; sourceTree = "<group>"; };
 		736022902CBC5AD9002E645C /* CustomBottomNavigationBarViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBottomNavigationBarViewModifier.swift; sourceTree = "<group>"; };
 		736022922CBC5D5C002E645C /* CustomBottomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBottomNavigationBar.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				735E99862CB83B4B00436DCB /* TextFieldClearButton.swift */,
+				73A11A012E2B100100436DCB /* HideKeyboardOnTap.swift */,
 				7360228E2CBC5896002E645C /* CustomNavigationBarViewModifier.swift */,
 				736022902CBC5AD9002E645C /* CustomBottomNavigationBarViewModifier.swift */,
 			);
@@ -458,6 +461,7 @@
 			files = (
 				73D2E0962A23F94100FE0D6D /* NoteScreenFlow.swift in Sources */,
 				735E99872CB83B4B00436DCB /* TextFieldClearButton.swift in Sources */,
+				73A11A022E2B100100436DCB /* HideKeyboardOnTap.swift in Sources */,
 				73DDE75C2CB56C670015FB29 /* SystemIcons.swift in Sources */,
 				73DFA36E2CB9449C00B32204 /* NoteRepositoryImpl.swift in Sources */,
 				73DFA3742CB9653600B32204 /* DeleteNoteUseCase.swift in Sources */,

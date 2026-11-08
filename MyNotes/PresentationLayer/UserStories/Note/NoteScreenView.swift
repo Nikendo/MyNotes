@@ -31,6 +31,7 @@ struct NoteScreenView: View {
       backgroundView
       contentView
     }
+    .hideKeyboardOnTap()
     .onAppear(perform: viewModel.bindInput)
     .onReceive(viewModel.$destination) { destination in
       switch destination {
